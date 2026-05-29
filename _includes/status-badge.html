@@ -1,0 +1,14 @@
+{% assign s = include.status %}
+{% if s == 'completed' or s == '已完成' %}
+<span class="badge badge-success">{{ s }}</span>
+{% elsif s == 'active' or s == '进行中' %}
+<span class="badge badge-warning">{{ s }}</span>
+{% elsif s == 'blocked' or s == '阻塞' %}
+<span class="badge badge-danger">{{ s }}</span>
+{% elsif s == 'open' or s == '未开始' %}
+<span class="badge badge-info">{{ s }}</span>
+{% elsif s == 'closed' or s == '已解决' %}
+<span class="badge badge-success">{{ s }}</span>
+{% else %}
+<span class="badge badge-muted">{{ s }}</span>
+{% endif %}

@@ -1,0 +1,237 @@
+// ===== 变量 =====
+$primary: #f59e0b;
+$primary-dark: #d97706;
+$bg: #0f172a;
+$bg-card: #1e293b;
+$bg-card-hover: #273548;
+$text: #e2e8f0;
+$text-muted: #94a3b8;
+$border: #334155;
+$success: #10b981;
+$danger: #ef4444;
+$info: #3b82f6;
+$warning: #f59e0b;
+
+// ===== Reset =====
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  background: $bg;
+  color: $text;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+a { color: $primary; text-decoration: none; }
+a:hover { color: $primary-dark; }
+
+// ===== 导航栏 =====
+.navbar {
+  position: fixed; top: 0; width: 100%;
+  background: rgba(15, 23, 42, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid $border;
+  z-index: 100; padding: 0 2rem;
+
+  .navbar-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 64px;
+  }
+
+  .logo {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 1.25rem; font-weight: 700; color: $primary; text-decoration: none;
+    .icon { font-size: 1.8rem; }
+  }
+
+  .nav-links {
+    display: flex; gap: 2rem; list-style: none;
+    a { color: $text-muted; font-size: 0.95rem; transition: color 0.2s; }
+    a:hover { color: $primary; }
+  }
+}
+
+// ===== 容器 =====
+.container {
+  max-width: 1200px; margin: 0 auto; padding: 0 2rem;
+}
+
+.section {
+  padding: 80px 0;
+  &:not(:last-child) { border-bottom: 1px solid $border; }
+}
+
+.section-header {
+  text-align: center; margin-bottom: 48px;
+  h2 { font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem; }
+  p { color: $text-muted; font-size: 1.05rem; }
+}
+
+// ===== 状态卡片 =====
+.status-cards {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.25rem;
+}
+
+.status-card {
+  background: $bg-card; border: 1px solid $border; border-radius: 12px;
+  padding: 24px; transition: all 0.2s;
+  &:hover { border-color: $primary; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.3); }
+
+  .card-label { color: $text-muted; font-size: 0.85rem; margin-bottom: 8px; }
+  .card-value { font-size: 1.8rem; font-weight: 800; color: #fff; }
+  .card-sub { font-size: 0.85rem; color: $text-muted; margin-top: 4px; }
+}
+
+// ===== 进度条 =====
+.progress-bar {
+  background: rgba(255,255,255,.06); border-radius: 50px; height: 10px; overflow: hidden;
+  .progress-fill {
+    height: 100%; border-radius: 50px; transition: width 0.6s ease;
+    background: linear-gradient(90deg, $primary, #fbbf24);
+  }
+}
+
+.progress-bar-sm {
+  @extend .progress-bar;
+  height: 6px;
+}
+
+// ===== 时间线 =====
+.timeline {
+  display: flex; gap: 0; align-items: flex-start;
+  overflow-x: auto; padding-bottom: 1rem;
+}
+
+.timeline-step {
+  flex: 1; min-width: 120px; text-align: center; position: relative;
+  padding: 0 8px;
+
+  &::after {
+    content: ''; position: absolute; top: 18px; right: -50%;
+    width: 100%; height: 3px; background: $border; z-index: 0;
+  }
+  &:last-child::after { display: none; }
+
+  &.completed::after { background: $success; }
+  &.active::after {
+    background: linear-gradient(90deg, $primary, $border);
+  }
+
+  .step-dot {
+    width: 36px; height: 36px; border-radius: 50%; margin: 0 auto 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem; position: relative; z-index: 1;
+    background: $bg-card; border: 2px solid $border; color: $text-muted;
+  }
+
+  &.completed .step-dot { background: $success; border-color: $success; color: #fff; }
+  &.active .step-dot { background: $primary; border-color: $primary; color: #000; animation: pulse 2s infinite; }
+
+  .step-label { font-size: 0.8rem; color: $text-muted; font-weight: 500; }
+  &.completed .step-label { color: $success; }
+  &.active .step-label { color: $primary; font-weight: 700; }
+}
+
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba($primary, 0.4); }
+  50% { box-shadow: 0 0 0 8px rgba($primary, 0); }
+}
+
+// ===== 列表 =====
+.item-list { list-style: none; }
+
+.item-row {
+  display: flex; align-items: center; gap: 16px;
+  padding: 16px 20px; border-radius: 8px;
+  border: 1px solid $border; margin-bottom: 8px;
+  background: $bg-card; transition: all 0.2s;
+  &:hover { background: $bg-card-hover; border-color: $primary; }
+  text-decoration: none; color: inherit;
+
+  .item-date { color: $text-muted; font-size: 0.85rem; white-space: nowrap; min-width: 90px; }
+  .item-title { flex: 1; font-weight: 600; color: #fff; }
+  .item-meta { color: $text-muted; font-size: 0.85rem; }
+}
+
+// ===== 徽章 =====
+.badge {
+  display: inline-block; padding: 3px 12px; border-radius: 50px;
+  font-size: 0.78rem; font-weight: 500; white-space: nowrap;
+}
+
+.badge-success { background: rgba($success, .15); color: lighten($success, 15%); }
+.badge-warning { background: rgba($warning, .15); color: lighten($warning, 10%); }
+.badge-danger  { background: rgba($danger, .15);  color: lighten($danger, 15%); }
+.badge-info    { background: rgba($info, .15);    color: lighten($info, 15%); }
+.badge-muted   { background: rgba($text-muted, .1); color: $text-muted; }
+
+// ===== 文章内容 =====
+.post-content {
+  h1, h2, h3 { margin-top: 2rem; margin-bottom: 0.75rem; color: #fff; }
+  h1 { font-size: 2rem; }
+  h2 { font-size: 1.5rem; border-bottom: 1px solid $border; padding-bottom: 0.5rem; }
+  h3 { font-size: 1.2rem; }
+  p { margin-bottom: 1rem; }
+  ul, ol { margin-bottom: 1rem; padding-left: 1.5rem; }
+  li { margin-bottom: 0.4rem; }
+  code { background: rgba(255,255,255,.06); padding: 2px 6px; border-radius: 4px; font-size: 0.9em; }
+  pre { background: $bg-card; border: 1px solid $border; border-radius: 8px; padding: 16px; overflow-x: auto; margin-bottom: 1rem; }
+  table { width: 100%; border-collapse: collapse; margin-bottom: 1rem; }
+  th { background: $bg-card; padding: 10px 14px; text-align: left; font-weight: 600; border-bottom: 2px solid $border; color: $primary; }
+  td { padding: 10px 14px; border-bottom: 1px solid $border; }
+  tr:hover { background: rgba($primary, .04); }
+  blockquote { border-left: 3px solid $primary; padding-left: 1rem; color: $text-muted; margin-bottom: 1rem; }
+}
+
+// ===== 功能卡片（首页保留） =====
+.features-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem;
+}
+
+.feature-card {
+  background: $bg-card; border: 1px solid $border; border-radius: 12px;
+  padding: 28px; transition: all 0.3s;
+  &:hover { background: $bg-card-hover; border-color: $primary; transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,.3); }
+
+  .card-icon { font-size: 2.2rem; margin-bottom: 1rem; display: block; }
+  h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 0.5rem; color: #fff; }
+  .sub-features { color: $text-muted; font-size: 0.9rem; margin-bottom: 0.75rem; }
+  .tech-tag {
+    display: inline-block; padding: 4px 12px; background: rgba($primary, .12);
+    color: $primary; border-radius: 50px; font-size: 0.8rem; font-weight: 500;
+  }
+}
+
+// ===== 表格徽章 =====
+.badge-sensor { background: rgba($info, .15); color: lighten($info, 15%); }
+.badge-com    { background: rgba($success, .15); color: lighten($success, 15%); }
+.badge-power  { background: rgba($danger, .15); color: lighten($danger, 15%); }
+
+// ===== 页脚 =====
+footer {
+  border-top: 1px solid $border; text-align: center;
+  padding: 32px 2rem; color: $text-muted; font-size: 0.85rem;
+  a { color: $primary; }
+}
+
+// ===== 滚动动画 =====
+.fade-in {
+  opacity: 0; transform: translateY(30px); transition: all 0.6s ease-out;
+  &.visible { opacity: 1; transform: translateY(0); }
+}
+
+// ===== 响应式 =====
+@media (max-width: 768px) {
+  .navbar .nav-links { display: none; }
+  .status-cards { grid-template-columns: 1fr 1fr; }
+  .features-grid { grid-template-columns: 1fr; }
+  .timeline { flex-direction: column; align-items: stretch; }
+  .timeline-step {
+    &::after { display: none; }
+    display: flex; align-items: center; gap: 12px; text-align: left;
+    .step-dot { margin: 0; }
+  }
+}

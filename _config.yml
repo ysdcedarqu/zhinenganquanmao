@@ -1,0 +1,32 @@
+title: 智能安全帽 · 项目进度
+description: 智慧工地安全解决方案 — 研发进度汇报
+url: "https://ysdcedarqu.github.io"
+baseurl: "/zhinenganquanmao"
+markdown: kramdown
+kramdown:
+  input: GFM
+
+collections:
+  issues:
+    output: true
+    permalink: /issues/:name/
+
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      category: "weekly"
+  - scope:
+      path: ""
+      type: "issues"
+    values:
+      layout: "issue"
+  - scope:
+      path: "process"
+    values:
+      layout: "process"
+
+plugins:
+  - jekyll-seo-tag
