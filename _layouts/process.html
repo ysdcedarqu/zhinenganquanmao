@@ -4,28 +4,24 @@ layout: default
 
 <div class="container">
   <div class="section">
-    <div style="margin-bottom: 2rem;">
-      <a href="{{ '/' | relative_url }}#process" style="color: var(--text-muted); font-size: 0.9rem;">&larr; 返回流程总览</a>
-    </div>
+    <a href="{{ '/' | relative_url }}#process" class="page-back">&larr; 返回流程总览</a>
 
-    <div style="margin-bottom: 2rem;">
-      <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 1rem;">
-        <span style="font-size: 2rem;">{{ page.icon }}</span>
-        <div>
-          <p style="font-size: 0.85rem; color: var(--text-muted);">阶段 {{ page.phase }}/7</p>
-          <h1 style="font-size: 2rem; font-weight: 800; color: #fff; margin: 0;">{{ page.title }}</h1>
-        </div>
-        {% include status-badge.html status=page.status %}
+    <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 0.5rem;">
+      <span style="font-size: 2.4rem; filter: drop-shadow(0 0 12px rgba(0,229,255,0.3));">{{ page.icon }}</span>
+      <div>
+        <p style="font-size: 0.8rem; color: var(--primary); font-weight: 600; letter-spacing: 2px; margin-bottom: 2px;">PHASE {{ page.phase }} / 7</p>
+        <h1 class="page-title" style="margin-bottom: 0;">{{ page.title }}</h1>
       </div>
+      {% include status-badge.html status=page.status %}
     </div>
 
     {% if page.progress %}
-    <div style="margin-bottom: 2rem;">
-      <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
-        <span style="font-size: 0.85rem; color: var(--text-muted);">阶段进度</span>
-        <span style="font-size: 0.85rem; color: var(--primary); font-weight: 600;">{{ page.progress }}%</span>
+    <div style="margin: 2rem 0;">
+      <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+        <span style="font-size: 0.8rem; color: var(--text-muted); letter-spacing: 1px;">阶段进度</span>
+        <span style="font-size: 0.9rem; color: var(--primary); font-weight: 700;">{{ page.progress }}%</span>
       </div>
-      <div class="progress-bar">
+      <div class="progress-bar-lg">
         <div class="progress-fill" style="width: {{ page.progress }}%;"></div>
       </div>
     </div>
@@ -35,7 +31,7 @@ layout: default
       {{ content }}
     </div>
 
-    <div style="display: flex; justify-content: space-between; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border); flex-wrap: wrap; gap: 1rem;">
+    <div class="process-nav">
       {% if page.prev %}
       <a href="{{ page.prev | relative_url }}" style="color: var(--text-muted);">&larr; 上一阶段</a>
       {% else %}

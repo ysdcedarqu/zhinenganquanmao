@@ -4,11 +4,26 @@ title: 项目进度总览
 ---
 
 <!-- Hero -->
-<section style="min-height: 60vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 100px 2rem 60px; position: relative; background: radial-gradient(ellipse at 50% 0%, rgba(245,158,11,.08), transparent 60%);">
-  <div style="position: relative; z-index: 1; max-width: 800px;">
-    <span style="display: inline-block; padding: 6px 18px; border: 1px solid var(--primary); border-radius: 50px; color: var(--primary); font-size: 0.85rem; font-weight: 500; margin-bottom: 1.5rem; letter-spacing: 1px;">🚀 智慧工地 · 安全先行</span>
-    <h1 style="font-size: 3rem; font-weight: 800; line-height: 1.15; margin-bottom: 1rem; background: linear-gradient(135deg, #fff 0%, var(--primary) 60%, #fbbf24 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">智能安全帽 · 项目进度</h1>
-    <p style="font-size: 1.15rem; color: var(--text-muted); max-width: 560px; margin: 0 auto;">集佩戴检测、姿态监测、实时定位、应急呼救、语音交互于一体的新一代工地安全解决方案</p>
+<section class="hero">
+  <div class="hero-content">
+    <span class="hero-badge">SMART CONSTRUCTION · SAFETY FIRST</span>
+    <h1 class="hero-title">智能安全帽 · 项目进度</h1>
+    <p class="hero-desc">集佩戴检测、姿态监测、实时定位、应急呼救、语音交互于一体的新一代工地安全解决方案</p>
+    <div class="hero-stats">
+      {% assign open_issues = site.issues | where: 'status', 'open' %}
+      <div class="stat-item">
+        <div class="stat-value">1/7</div>
+        <div class="stat-label">当前阶段</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value">5%</div>
+        <div class="stat-label">整体进度</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value">{{ open_issues.size }}</div>
+        <div class="stat-label">待解决问题</div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -16,25 +31,25 @@ title: 项目进度总览
 <section id="overview" class="container">
   <div class="section">
     <div class="section-header fade-in">
-      <h2>📊 项目状态总览</h2>
-      <p>关键指标一览</p>
+      <h2>项目状态总览</h2>
+      <p>关键指标实时监控</p>
     </div>
     <div class="status-cards fade-in">
       <div class="status-card">
         <div class="card-label">当前阶段</div>
-        <div class="card-value" style="font-size: 1.3rem;">需求分析</div>
+        <div class="card-value" style="font-size: 1.4rem;">需求分析</div>
         <div class="card-sub">阶段 1/7</div>
       </div>
       <div class="status-card">
         <div class="card-label">整体进度</div>
         <div class="card-value">5%</div>
-        <div class="progress-bar-sm" style="margin-top: 8px;">
+        <div class="progress-bar" style="margin-top: 12px;">
           <div class="progress-fill" style="width: 5%;"></div>
         </div>
       </div>
       <div class="status-card">
         <div class="card-label">待解决问题</div>
-        <div class="card-value">{% assign open_issues = site.issues | where: 'status', 'open' %}{{ open_issues.size }}</div>
+        <div class="card-value">{{ open_issues.size }}</div>
         <div class="card-sub">{{ site.issues.size }} 个问题总计</div>
       </div>
       <div class="status-card">
@@ -47,27 +62,31 @@ title: 项目进度总览
 </section>
 
 <!-- 研发流程 -->
-<section id="process" style="background: rgba(30,41,59,.3);">
+<section id="process" class="section-alt">
   <div class="container">
     <div class="section">
       <div class="section-header fade-in">
-        <h2>🏗️ 研发流程</h2>
+        <h2>研发流程</h2>
         <p>从需求分析到部署交付的全流程</p>
       </div>
       <div class="timeline fade-in">
         {% assign process_pages = site.pages | where_exp: "p", "p.path contains 'process/'" | sort: "phase" %}
         {% for p in process_pages %}
-        <a href="{{ p.url | relative_url }}" class="timeline-step {% if p.status == '已完成' %}completed{% elsif p.status == '进行中' %}active{% endif %}" style="text-decoration: none;">
+        <a href="{{ p.url | relative_url }}" class="timeline-step {% if p.status == '已完成' %}completed{% elsif p.status == '进行中' %}active{% endif %}">
           <div class="step-dot">{{ p.icon }}</div>
           <div class="step-label">{{ p.title }}</div>
         </a>
         {% endfor %}
       </div>
       {% if process_pages.size > 0 %}
-      <div style="text-align: center; margin-top: 2rem;">
+      <div style="text-align: center; margin-top: 2.5rem;" class="fade-in">
         {% for p in process_pages %}
           {% if p.status == '进行中' %}
-          <p style="color: var(--primary); font-weight: 600;">当前阶段：{{ p.title }} — 进度 {{ p.progress }}%</p>
+          <div style="display: inline-flex; align-items: center; gap: 12px; padding: 12px 28px; background: rgba(0,229,255,0.05); border: 1px solid rgba(0,229,255,0.15); border-radius: 50px;">
+            <span style="color: var(--primary); font-weight: 700;">当前阶段：{{ p.title }}</span>
+            <span style="color: var(--text-muted);">—</span>
+            <span style="color: var(--primary);">进度 {{ p.progress }}%</span>
+          </div>
           {% endif %}
         {% endfor %}
       </div>
@@ -81,7 +100,7 @@ title: 项目进度总览
   <div class="container">
     <div class="section">
       <div class="section-header fade-in">
-        <h2>📝 周报</h2>
+        <h2>周报</h2>
         <p>每周研发进展记录</p>
       </div>
       {% if site.posts.size > 0 %}
@@ -102,11 +121,11 @@ title: 项目进度总览
 </section>
 
 <!-- 问题跟踪 -->
-<section id="issues" style="background: rgba(30,41,59,.3);">
+<section id="issues" class="section-alt">
   <div class="container">
     <div class="section">
       <div class="section-header fade-in">
-        <h2>⚠️ 问题跟踪</h2>
+        <h2>问题跟踪</h2>
         <p>研发过程中遇到的问题与解决方案</p>
       </div>
       {% if site.issues.size > 0 %}
@@ -126,12 +145,12 @@ title: 项目进度总览
   </div>
 </section>
 
-<!-- 技术路线 -->
+<!-- 功能模块 -->
 <section id="tech">
   <div class="container">
     <div class="section">
       <div class="section-header fade-in">
-        <h2>📋 功能模块</h2>
+        <h2>功能模块</h2>
         <p>九大功能模块技术路线</p>
       </div>
       <div class="features-grid fade-in">

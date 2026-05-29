@@ -2,6 +2,8 @@
 
 基于 GitHub Pages + Jekyll 的项目进度管理站点，用于向领导汇报研发周报、问题跟踪和全流程进度。
 
+**在线预览**：<https://ysdcedarqu.github.io/zhinenganquanmao/>
+
 ## 站点结构
 
 | 板块 | 说明 |

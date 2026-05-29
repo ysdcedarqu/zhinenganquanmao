@@ -4,34 +4,34 @@ layout: default
 
 <div class="container">
   <div class="section">
-    <div style="margin-bottom: 2rem;">
-      <a href="{{ '/' | relative_url }}#issues" style="color: var(--text-muted); font-size: 0.9rem;">&larr; 返回问题列表</a>
-    </div>
+    <a href="{{ '/' | relative_url }}#issues" class="page-back">&larr; 返回问题列表</a>
 
-    <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 2rem;">
-      <h1 style="font-size: 1.8rem; font-weight: 800; color: #fff;">{{ page.title }}</h1>
+    <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 1rem;">
+      <h1 class="page-title" style="margin-bottom: 0;">{{ page.title }}</h1>
       {% include status-badge.html status=page.status %}
     </div>
 
-    <div style="display: flex; gap: 24px; margin-bottom: 2rem; flex-wrap: wrap;">
-      <div>
-        <p style="font-size: 0.85rem; color: var(--text-muted);">严重程度</p>
-        {% if page.severity == '高' %}
-        <span class="badge badge-danger">{{ page.severity }}</span>
-        {% elsif page.severity == '中' %}
-        <span class="badge badge-warning">{{ page.severity }}</span>
-        {% else %}
-        <span class="badge badge-info">{{ page.severity }}</span>
-        {% endif %}
+    <div class="page-meta">
+      <div class="meta-item">
+        <div class="meta-label">严重程度</div>
+        <div class="meta-value">
+          {% if page.severity == '高' %}
+          <span class="badge badge-danger">{{ page.severity }}</span>
+          {% elsif page.severity == '中' %}
+          <span class="badge badge-warning">{{ page.severity }}</span>
+          {% else %}
+          <span class="badge badge-info">{{ page.severity }}</span>
+          {% endif %}
+        </div>
       </div>
-      <div>
-        <p style="font-size: 0.85rem; color: var(--text-muted);">提出日期</p>
-        <p style="font-weight: 600;">{{ page.date | date: "%Y-%m-%d" }}</p>
+      <div class="meta-item">
+        <div class="meta-label">提出日期</div>
+        <div class="meta-value">{{ page.date | date: "%Y-%m-%d" }}</div>
       </div>
       {% if page.resolution_date %}
-      <div>
-        <p style="font-size: 0.85rem; color: var(--text-muted);">解决日期</p>
-        <p style="font-weight: 600;">{{ page.resolution_date }}</p>
+      <div class="meta-item">
+        <div class="meta-label">解决日期</div>
+        <div class="meta-value">{{ page.resolution_date }}</div>
       </div>
       {% endif %}
     </div>
@@ -41,8 +41,8 @@ layout: default
     </div>
 
     {% if page.resolution %}
-    <div style="margin-top: 2rem; padding: 20px; background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.2); border-radius: 12px;">
-      <h3 style="color: var(--success); margin-bottom: 0.5rem;">解决方案</h3>
+    <div class="info-panel panel-success">
+      <h3>解决方案</h3>
       <p>{{ page.resolution }}</p>
     </div>
     {% endif %}
