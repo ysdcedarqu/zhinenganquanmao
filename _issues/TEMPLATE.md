@@ -2,7 +2,7 @@
 title: 问题标题（简要描述）
 status: open
 severity: 高
-date: YYYY-MM-DD
+date: 2026-01-01
 published: false
 ---
 
