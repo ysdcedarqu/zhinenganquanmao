@@ -110,15 +110,28 @@ title: 项目进度总览
         <p>每周研发进展记录</p>
       </div>
       {% if site.posts.size > 0 %}
-      <ul class="item-list fade-in">
-        {% for post in site.posts %}
-        <a href="{{ post.url | relative_url }}" class="item-row">
-          <span class="item-date">{{ post.date | date: "%m-%d" }}</span>
-          <span class="item-title">{{ post.title }}</span>
-          {% if post.progress %}<span class="item-meta">{{ post.progress }}%</span>{% endif %}
-        </a>
-        {% endfor %}
-      </ul>
+        {% assign latest_post = site.posts | first %}
+        <!-- 最新周报全文展示 -->
+        <div class="post-content fade-in" style="margin-bottom: 3rem;">
+          {{ latest_post.content }}
+        </div>
+
+        <!-- 历史周报列表 -->
+        {% assign older_posts = site.posts | shift %}
+        {% if older_posts.size > 0 %}
+        <div class="fade-in" style="margin-top: 2rem;">
+          <h3 style="color: var(--text-muted); font-size: 0.9rem; letter-spacing: 1px; margin-bottom: 1rem;">历史周报</h3>
+          <ul class="item-list">
+            {% for post in older_posts %}
+            <a href="{{ post.url | relative_url }}" class="item-row">
+              <span class="item-date">{{ post.date | date: "%m-%d" }}</span>
+              <span class="item-title">{{ post.title }}</span>
+              {% if post.progress %}<span class="item-meta">{{ post.progress }}%</span>{% endif %}
+            </a>
+            {% endfor %}
+          </ul>
+        </div>
+        {% endif %}
       {% else %}
       <p style="text-align: center; color: var(--text-muted); padding: 2rem;">暂无周报，即将开始更新</p>
       {% endif %}
