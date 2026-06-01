@@ -112,8 +112,15 @@ title: 项目进度总览
       {% if site.posts.size > 0 %}
         {% assign latest_post = site.posts | first %}
         <!-- 最新周报全文展示 -->
-        <div class="post-content fade-in" style="margin-bottom: 3rem;">
-          {{ latest_post.content }}
+        <div class="fade-in" style="margin-bottom: 3rem;">
+          <p style="color: var(--primary); font-size: 0.85rem; font-weight: 600; letter-spacing: 1px; margin-bottom: 1rem;">
+            {{ latest_post.date | date: "%Y 年 %-m 月 %-d 日" }}
+            {% if latest_post.org %} &nbsp;·&nbsp; {{ latest_post.org }}{% endif %}
+            {% if latest_post.reporter %} &nbsp;·&nbsp; 填报人：{{ latest_post.reporter }}{% endif %}
+          </p>
+          <div class="post-content">
+            {{ latest_post.content }}
+          </div>
         </div>
 
         <!-- 历史周报列表 -->

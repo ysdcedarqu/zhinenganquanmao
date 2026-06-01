@@ -48,13 +48,17 @@ next_plan:
 |------|------|
 | `title` | 周报标题 |
 | `date` | 发布日期，须与文件名日期一致 |
+| `reporter` | 填报人姓名 |
+| `org` | 所属单位 |
 | `progress` | 整体进度 0–100，首页自动读取最新一篇的值 |
 | `issues` | 本周遇到的问题（数组） |
 | `next_plan` | 下周计划（数组） |
 
+> 可直接复制 `_posts/weekly/TEMPLATE.md` 作为起点。
+
 ### 2. 管理问题
 
-在 `_issues/` 下新建 `YYYY-MM-DD-问题简述.md`：
+**新建问题** — 在 `_issues/` 下新建 `YYYY-MM-DD-问题简述.md`：
 
 ```markdown
 ---
@@ -74,6 +78,22 @@ date: 2026-06-06
 ...
 ```
 
+**关闭问题** — 编辑原文件，改 `status` 并补充解决信息：
+
+```markdown
+---
+title: 问题标题
+status: closed
+severity: 高
+date: 2026-06-06
+resolution_date: 2026-06-10
+resolution: 采用 GNSS + BLE 混合方案，芯片选型为 xxx
+---
+
+## 问题描述
+...（原内容保留不动）...
+```
+
 | 字段 | 说明 |
 |------|------|
 | `title` | 问题标题 |
@@ -81,9 +101,11 @@ date: 2026-06-06
 | `severity` | `高` / `中` / `低` |
 | `date` | 发现日期 |
 | `resolution_date` | 解决日期（关闭时填写） |
-| `resolution` | 解决方案（关闭时填写） |
+| `resolution` | 解决方案简述（关闭时填写） |
 
-> 关闭问题：改 `status: closed`，补充 `resolution_date` 和 `resolution`。已解决问题自动移入「已解决」分区，不删除。
+> 只需改 Front Matter 三个字段（`status`、`resolution_date`、`resolution`），正文不动。网页自动将该问题从「未解决」移至「已解决」分区展示。
+>
+> 可直接复制 `_issues/TEMPLATE.md` 作为起点。
 
 ### 3. 更新阶段进度
 
@@ -129,8 +151,8 @@ git push origin master
 ├── _includes/           # 可复用组件（导航、页脚、状态徽章）
 ├── _sass/main.scss      # 样式源文件
 ├── assets/css/style.scss # 样式入口（编译为 style.css）
-├── _posts/weekly/       # 周报（YYYY-MM-DD-weekNN.md）
-├── _issues/             # 问题跟踪（YYYY-MM-DD-问题简述.md）
+├── _posts/weekly/       # 周报（复制 TEMPLATE.md 新建）
+├── _issues/             # 问题跟踪（复制 TEMPLATE.md 新建）
 └── process/             # 研发阶段详情页
 ```
 |------|------|

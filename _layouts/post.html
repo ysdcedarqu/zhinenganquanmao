@@ -8,6 +8,8 @@ layout: default
 
     <p style="color: var(--primary); font-size: 0.85rem; font-weight: 600; letter-spacing: 1px; margin-bottom: 0.5rem;">
       {{ page.date | date: "%Y 年 %-m 月 %-d 日" }}
+      {% if page.org %} &nbsp;·&nbsp; {{ page.org }}{% endif %}
+      {% if page.reporter %} &nbsp;·&nbsp; 填报人：{{ page.reporter }}{% endif %}
     </p>
     <h1 class="page-title">{{ page.title }}</h1>
 
