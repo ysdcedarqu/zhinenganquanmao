@@ -11,12 +11,15 @@ title: 项目进度总览
     <p class="hero-desc">集佩戴检测、姿态监测、实时定位、应急呼救、语音交互于一体的新一代工地安全解决方案</p>
     <div class="hero-stats">
       {% assign open_issues = site.issues | where: 'status', 'open' %}
+      {% assign current_phase = site.pages | where: 'status', '进行中' | first %}
+      {% assign total_phases = site.pages | where_exp: "p", "p.phase" | size %}
+      {% assign latest_post = site.posts | first %}
       <div class="stat-item">
-        <div class="stat-value">1/7</div>
+        <div class="stat-value">{{ current_phase.phase | default: "—" }}/{{ total_phases }}</div>
         <div class="stat-label">当前阶段</div>
       </div>
       <div class="stat-item">
-        <div class="stat-value">5%</div>
+        <div class="stat-value">{% if latest_post %}{{ latest_post.progress }}{% else %}0{% endif %}%</div>
         <div class="stat-label">整体进度</div>
       </div>
       <div class="stat-item">
@@ -35,16 +38,19 @@ title: 项目进度总览
       <p>关键指标实时监控</p>
     </div>
     <div class="status-cards fade-in">
+      {% assign current_phase = site.pages | where: 'status', '进行中' | first %}
+      {% assign total_phases = site.pages | where_exp: "p", "p.phase" | size %}
+      {% assign latest_post = site.posts | first %}
       <div class="status-card">
         <div class="card-label">当前阶段</div>
-        <div class="card-value" style="font-size: 1.4rem;">需求分析</div>
-        <div class="card-sub">阶段 1/7</div>
+        <div class="card-value" style="font-size: 1.4rem;">{{ current_phase.title | default: "未开始" }}</div>
+        <div class="card-sub">阶段 {{ current_phase.phase | default: "—" }}/{{ total_phases }}</div>
       </div>
       <div class="status-card">
         <div class="card-label">整体进度</div>
-        <div class="card-value">5%</div>
+        <div class="card-value">{% if latest_post %}{{ latest_post.progress }}{% else %}0{% endif %}%</div>
         <div class="progress-bar" style="margin-top: 12px;">
-          <div class="progress-fill" style="width: 5%;"></div>
+          <div class="progress-fill" style="width: {% if latest_post %}{{ latest_post.progress }}{% else %}0{% endif %}%;"></div>
         </div>
       </div>
       <div class="status-card">
