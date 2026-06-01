@@ -147,16 +147,44 @@ title: 项目进度总览
         <h2>问题跟踪</h2>
         <p>研发过程中遇到的问题与解决方案</p>
       </div>
+
+      {% assign open_issues = site.issues | where: 'status', 'open' | sort: 'date' | reverse %}
+      {% assign closed_issues = site.issues | where: 'status', 'closed' | sort: 'date' | reverse %}
+
       {% if site.issues.size > 0 %}
-      <ul class="item-list fade-in">
-        {% for issue in site.issues %}
-        <a href="{{ issue.url | relative_url }}" class="item-row">
-          <span class="item-date">{{ issue.date | date: "%m-%d" }}</span>
-          <span class="item-title">{{ issue.title }}</span>
-          <span class="item-meta">{% include status-badge.html status=issue.status %}</span>
-        </a>
-        {% endfor %}
-      </ul>
+
+      <!-- 未解决问题 -->
+      {% if open_issues.size > 0 %}
+      <div class="fade-in" style="margin-bottom: 2rem;">
+        <h3 style="color: var(--accent); font-size: 0.9rem; letter-spacing: 1px; margin-bottom: 1rem;">● 未解决 ({{ open_issues.size }})</h3>
+        <ul class="item-list">
+          {% for issue in open_issues %}
+          <a href="{{ issue.url | relative_url }}" class="item-row">
+            <span class="item-date">{{ issue.date | date: "%m-%d" }}</span>
+            <span class="item-title">{{ issue.title }}</span>
+            <span class="item-meta">{% include status-badge.html status=issue.status %}</span>
+          </a>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endif %}
+
+      <!-- 已解决问题 -->
+      {% if closed_issues.size > 0 %}
+      <div class="fade-in">
+        <h3 style="color: var(--primary); font-size: 0.9rem; letter-spacing: 1px; margin-bottom: 1rem;">● 已解决 ({{ closed_issues.size }})</h3>
+        <ul class="item-list">
+          {% for issue in closed_issues %}
+          <a href="{{ issue.url | relative_url }}" class="item-row">
+            <span class="item-date">{{ issue.date | date: "%m-%d" }}</span>
+            <span class="item-title">{{ issue.title }}</span>
+            <span class="item-meta">{% include status-badge.html status=issue.status %}</span>
+          </a>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endif %}
+
       {% else %}
       <p style="text-align: center; color: var(--text-muted); padding: 2rem;">暂无问题记录</p>
       {% endif %}
