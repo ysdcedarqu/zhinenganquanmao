@@ -1,0 +1,16 @@
+{
+  "name": "zhinenganquanmao",
+  "version": "1.0.0",
+  "description": "智能安全帽 · 项目进度看板 — Node.js 静态站点生成器",
+  "private": true,
+  "scripts": {
+    "build": "node scripts/build.js",
+    "clean": "rm -rf _site"
+  },
+  "dependencies": {
+    "fs-extra": "^11.2.0",
+    "gray-matter": "^4.0.3",
+    "marked": "^12.0.0",
+    "sass": "^1.77.0"
+  }
+}

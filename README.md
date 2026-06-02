@@ -1,17 +1,20 @@
 # 项目进度看板 · 使用指南
 
-基于 GitHub Pages + Jekyll 的零成本项目进度管理站点。`git push` 即部署，Markdown 编写即更新。
+基于 GitHub Pages + Node.js 构建的零成本项目进度管理站点。Markdown 编写，Node.js 构建，`git push` 即部署。
 
 ---
 
-## 快速开始（本地预览）
+## 快速开始
 
 ```bash
-gem install jekyll bundler
-bundle exec jekyll serve --livereload
+# 安装依赖
+npm install
+
+# 构建站点（输出到 _site/）
+npm run build
 ```
 
-打开 `http://localhost:4000/zhinenganquanmao/` 预览，修改文件自动刷新。
+构建后 `_site/` 目录即为完整的静态站点，可直接推送至 GitHub Pages。
 
 ---
 
@@ -116,15 +119,20 @@ status: 进行中       # 未开始 / 进行中 / 已完成
 progress: 60         # 0–100
 ```
 
-### 4. 发布上线
+### 4. 构建并发布上线
 
 ```bash
+# 构建站点
+npm run build
+
+# 提交并推送
 git add .
 git commit -m "更新周报 / 关闭问题 / 更新进度"
 git push origin master
 ```
 
-推送后 1–2 分钟自动部署生效。未更新时 `Ctrl + Shift + R` 强制刷新浏览器。
+> 如果 GitHub Pages 配置为 `_site/` 目录部署，推送后 1–2 分钟自动生效。
+> 也可以将 `_site/` 内容部署到任意静态服务器。
 
 ---
 
@@ -145,15 +153,17 @@ git push origin master
 
 ```
 .
-├── _config.yml          # Jekyll 配置（站点信息、集合、默认布局）
-├── index.md             # 首页仪表盘
-├── _layouts/            # 页面布局模板
-├── _includes/           # 可复用组件（导航、页脚、状态徽章）
-├── _sass/main.scss      # 样式源文件
+├── package.json          # Node.js 依赖与构建脚本
+├── scripts/build.js      # 静态站点生成器
+├── index.md              # 首页仪表盘
+├── _layouts/             # 页面布局模板
+├── _includes/            # 可复用组件（导航、页脚、状态徽章）
+├── _sass/main.scss       # 样式源文件
 ├── assets/css/style.scss # 样式入口（编译为 style.css）
-├── _posts/weekly/       # 周报（复制 TEMPLATE.md 新建）
-├── _issues/             # 问题跟踪（复制 TEMPLATE.md 新建）
-└── process/             # 研发阶段详情页
+├── _posts/weekly/        # 周报（复制 TEMPLATE.md 新建）
+├── _issues/              # 问题跟踪（复制 TEMPLATE.md 新建）
+├── process/              # 研发阶段详情页
+└── _site/                # 构建输出目录（不提交到 Git）
 ```
 |------|------|
 | 屈雪松 | 站点架构设计与开发、样式定制、内容维护 |
@@ -164,15 +174,13 @@ git push origin master
 
 本仓库为内部项目进度管理用途，暂不设置开源许可证。
 
-## 本地预览
+## 构建说明
 
-需要 Ruby 环境：
+需要 Node.js 环境：
 
 ```bash
-gem install bundler
-bundle init
-bundle add jekyll jekyll-seo-tag
-bundle exec jekyll serve
+npm install
+npm run build
 ```
 
-浏览器打开 `http://localhost:4000/zhinenganquanmao/` 预览。
+构建产物在 `_site/` 目录，可直接部署到任意静态服务器或 GitHub Pages。
