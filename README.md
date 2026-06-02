@@ -2,6 +2,12 @@
 
 基于 GitHub Pages + Node.js 构建的零成本项目进度管理站点。Markdown 编写，Node.js 构建，`git push` 即部署。
 
+| 类型 | 地址 |
+|------|------|
+| 🌐 静态网页 | [ysdcedarqu.github.io/zhinenganquanmao](https://ysdcedarqu.github.io/zhinenganquanmao/) |
+| 📦 GitHub 仓库 | [github.com/ysdcedarqu/zhinenganquanmao](https://github.com/ysdcedarqu/zhinenganquanmao) |
+| 📦 Gitee 仓库 | [gitee.com/ysdcedarqu/zhinenganquanmao](https://gitee.com/ysdcedarqu/zhinenganquanmao) |
+
 ---
 
 ## 快速开始
