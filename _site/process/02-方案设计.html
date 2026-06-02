@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>方案设计 · 智能安全帽 · 项目进度</title>
+  <link rel="stylesheet" href="/anquanmao/assets/css/style.css">
+  
+  <meta name="description" content="智慧工地安全解决方案 — 研发进度汇报">
+  <meta property="og:title" content="方案设计 · 智能安全帽 · 项目进度">
+  <meta property="og:description" content="智慧工地安全解决方案 — 研发进度汇报">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ysdcedarqu.github.io/anquanmao/process/02-方案设计.html">
+  
+</head>
+<body>
+  <nav class="navbar">
+  <div class="navbar-inner">
+    <a href="/anquanmao/" class="logo">
+      <span class="icon">🪖</span> SMART HELMET
+    </a>
+    <ul class="nav-links">
+      <li><a href="/anquanmao/#overview">状态总览</a></li>
+      <li><a href="/anquanmao/#process">研发流程</a></li>
+      <li><a href="/anquanmao/#weekly">周报</a></li>
+      <li><a href="/anquanmao/#issues">问题跟踪</a></li>
+    </ul>
+  </div>
+</nav>
+
+  <main style="padding-top: 68px;">
+    
+<div class="container">
+  <div class="section">
+    <a href="/anquanmao/#process" class="page-back">&larr; 返回流程总览</a>
+
+    <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 0.5rem;">
+      <span style="font-size: 2.4rem; filter: drop-shadow(0 0 12px rgba(0,229,255,0.3));">📐</span>
+      <div>
+        <p style="font-size: 0.8rem; color: var(--primary); font-weight: 600; letter-spacing: 2px; margin-bottom: 2px;">PHASE 2 / 7</p>
+        <h1 class="page-title" style="margin-bottom: 0;">方案设计</h1>
+      </div>
+      <span class="badge badge-info">未开始</span>
+    </div>
+
+    
+    <div style="margin: 2rem 0;">
+      <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+        <span style="font-size: 0.8rem; color: var(--text-muted); letter-spacing: 1px;">阶段进度</span>
+        <span style="font-size: 0.9rem; color: var(--primary); font-weight: 700;">0%</span>
+      </div>
+      <div class="progress-bar-lg">
+        <div class="progress-fill" style="width: 0%;"></div>
+      </div>
+    </div>
+
+    <div class="post-content">
+      <h2>目标</h2>
+<p>基于需求分析结果，设计系统整体方案，包括硬件架构、软件架构、通信方案和安全帽内部模块布局。</p>
+<h2>主要工作</h2>
+<ul>
+<li><input disabled="" type="checkbox"> 设计硬件系统架构（MCU 选型方向、外设接口规划）</li>
+<li><input disabled="" type="checkbox"> 设计软件系统架构（嵌入式软件模块划分、通信协议）</li>
+<li><input disabled="" type="checkbox"> 设计安全帽内部模块布局方案</li>
+<li><input disabled="" type="checkbox"> 确定数据传输协议（4G 上报格式、云端接口）</li>
+<li><input disabled="" type="checkbox"> 功耗分析与优化策略</li>
+</ul>
+<h2>关键决策点</h2>
+<ol>
+<li><strong>MCU 选型方向</strong>：高性能 ARM Cortex-M vs 低功耗 RISC-V</li>
+<li><strong>定位方案</strong>：GNSS 单模 vs GNSS+BLE 混合</li>
+<li><strong>音频方案</strong>：Codec 芯片 vs 集成音频 MCU</li>
+<li><strong>模块间通信</strong>：I2C/SPI/UART 接口分配</li>
+</ol>
+<h2>交付物</h2>
+<ul>
+<li>系统架构设计文档</li>
+<li>安全帽模块布局方案</li>
+<li>接口定义文档</li>
+</ul>
+
+    </div>
+
+    <div class="process-nav">
+      <a href="/anquanmao/process/01-需求分析.html" style="color: var(--text-muted);">&larr; 上一阶段</a>
+      <a href="/anquanmao/process/03-硬件选型.html" style="color: var(--primary);">下一阶段 &rarr;</a>
+    </div>
+  </div>
+</div>
+  </main>
+  <footer>
+  <p>&copy; 2026 智能安全帽 &middot; 智慧工地安全解决方案 &middot; Powered by <a href="https://github.com/ysdcedarqu/zhinenganquanmao" target="_blank">GitHub</a></p>
+</footer>
+
+
+  <script>
+    // 滚动淡入
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // 导航栏滚动效果
+    const navbar = document.querySelector('.navbar');
+    let lastScroll = 0;
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      if (scrollY > 100) {
+        navbar.style.boxShadow = '0 4px 30px rgba(0,0,0,0.3), 0 0 20px rgba(0,229,255,0.05)';
+      } else {
+        navbar.style.boxShadow = 'none';
+      }
+      lastScroll = scrollY;
+    });
+  </script>
+</body>
+</html>

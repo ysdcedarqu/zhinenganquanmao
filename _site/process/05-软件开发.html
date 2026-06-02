@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>软件开发 · 智能安全帽 · 项目进度</title>
+  <link rel="stylesheet" href="/anquanmao/assets/css/style.css">
+  
+  <meta name="description" content="智慧工地安全解决方案 — 研发进度汇报">
+  <meta property="og:title" content="软件开发 · 智能安全帽 · 项目进度">
+  <meta property="og:description" content="智慧工地安全解决方案 — 研发进度汇报">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ysdcedarqu.github.io/anquanmao/process/05-软件开发.html">
+  
+</head>
+<body>
+  <nav class="navbar">
+  <div class="navbar-inner">
+    <a href="/anquanmao/" class="logo">
+      <span class="icon">🪖</span> SMART HELMET
+    </a>
+    <ul class="nav-links">
+      <li><a href="/anquanmao/#overview">状态总览</a></li>
+      <li><a href="/anquanmao/#process">研发流程</a></li>
+      <li><a href="/anquanmao/#weekly">周报</a></li>
+      <li><a href="/anquanmao/#issues">问题跟踪</a></li>
+    </ul>
+  </div>
+</nav>
+
+  <main style="padding-top: 68px;">
+    
+<div class="container">
+  <div class="section">
+    <a href="/anquanmao/#process" class="page-back">&larr; 返回流程总览</a>
+
+    <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 0.5rem;">
+      <span style="font-size: 2.4rem; filter: drop-shadow(0 0 12px rgba(0,229,255,0.3));">💻</span>
+      <div>
+        <p style="font-size: 0.8rem; color: var(--primary); font-weight: 600; letter-spacing: 2px; margin-bottom: 2px;">PHASE 5 / 7</p>
+        <h1 class="page-title" style="margin-bottom: 0;">软件开发</h1>
+      </div>
+      <span class="badge badge-info">未开始</span>
+    </div>
+
+    
+    <div style="margin: 2rem 0;">
+      <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+        <span style="font-size: 0.8rem; color: var(--text-muted); letter-spacing: 1px;">阶段进度</span>
+        <span style="font-size: 0.9rem; color: var(--primary); font-weight: 700;">0%</span>
+      </div>
+      <div class="progress-bar-lg">
+        <div class="progress-fill" style="width: 0%;"></div>
+      </div>
+    </div>
+
+    <div class="post-content">
+      <h2>目标</h2>
+<p>完成嵌入式固件开发、云端后端开发和管理端前端开发。</p>
+<h2>主要工作</h2>
+<h3>嵌入式固件</h3>
+<ul>
+<li><input disabled="" type="checkbox"> MCU 外设驱动开发（IMU、霍尔、定位、音频、4G 等）</li>
+<li><input disabled="" type="checkbox"> 佩戴检测算法实现</li>
+<li><input disabled="" type="checkbox"> 跌倒/撞击检测算法实现</li>
+<li><input disabled="" type="checkbox"> SOS 按键和蜂鸣器控制</li>
+<li><input disabled="" type="checkbox"> 4G 通信和数据上报协议</li>
+<li><input disabled="" type="checkbox"> 低功耗管理策略</li>
+<li><input disabled="" type="checkbox"> OTA 升级功能</li>
+</ul>
+<h3>云端后端</h3>
+<ul>
+<li><input disabled="" type="checkbox"> 设备管理接口</li>
+<li><input disabled="" type="checkbox"> 数据接收和存储服务</li>
+<li><input disabled="" type="checkbox"> AI 识别服务（未佩戴检测、危险场景识别）</li>
+<li><input disabled="" type="checkbox"> 电子围栏和轨迹服务</li>
+</ul>
+<h3>管理端</h3>
+<ul>
+<li><input disabled="" type="checkbox"> 实时监控大屏</li>
+<li><input disabled="" type="checkbox"> 设备管理页面</li>
+<li><input disabled="" type="checkbox"> 报警和事件通知</li>
+<li><input disabled="" type="checkbox"> 轨迹回放</li>
+</ul>
+<h2>交付物</h2>
+<ul>
+<li>嵌入式固件（可烧录镜像）</li>
+<li>云端服务部署包</li>
+<li>管理端 Web 应用</li>
+</ul>
+
+    </div>
+
+    <div class="process-nav">
+      <a href="/anquanmao/process/04-原型开发.html" style="color: var(--text-muted);">&larr; 上一阶段</a>
+      <a href="/anquanmao/process/06-集成测试.html" style="color: var(--primary);">下一阶段 &rarr;</a>
+    </div>
+  </div>
+</div>
+  </main>
+  <footer>
+  <p>&copy; 2026 智能安全帽 &middot; 智慧工地安全解决方案 &middot; Powered by <a href="https://github.com/ysdcedarqu/zhinenganquanmao" target="_blank">GitHub</a></p>
+</footer>
+
+
+  <script>
+    // 滚动淡入
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // 导航栏滚动效果
+    const navbar = document.querySelector('.navbar');
+    let lastScroll = 0;
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      if (scrollY > 100) {
+        navbar.style.boxShadow = '0 4px 30px rgba(0,0,0,0.3), 0 0 20px rgba(0,229,255,0.05)';
+      } else {
+        navbar.style.boxShadow = 'none';
+      }
+      lastScroll = scrollY;
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>定位模块技术路线未确定 · 智能安全帽 · 项目进度</title>
+  <link rel="stylesheet" href="/anquanmao/assets/css/style.css">
+  
+  <meta name="description" content="智慧工地安全解决方案 — 研发进度汇报">
+  <meta property="og:title" content="定位模块技术路线未确定 · 智能安全帽 · 项目进度">
+  <meta property="og:description" content="智慧工地安全解决方案 — 研发进度汇报">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ysdcedarqu.github.io/anquanmao/issues/2026-05-23-定位模块技术路线未确定.html">
+  
+</head>
+<body>
+  <nav class="navbar">
+  <div class="navbar-inner">
+    <a href="/anquanmao/" class="logo">
+      <span class="icon">🪖</span> SMART HELMET
+    </a>
+    <ul class="nav-links">
+      <li><a href="/anquanmao/#overview">状态总览</a></li>
+      <li><a href="/anquanmao/#process">研发流程</a></li>
+      <li><a href="/anquanmao/#weekly">周报</a></li>
+      <li><a href="/anquanmao/#issues">问题跟踪</a></li>
+    </ul>
+  </div>
+</nav>
+
+  <main style="padding-top: 68px;">
+    
+<div class="container">
+  <div class="section">
+    <a href="/anquanmao/#issues" class="page-back">&larr; 返回问题列表</a>
+
+    <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 1rem;">
+      <h1 class="page-title" style="margin-bottom: 0;">定位模块技术路线未确定</h1>
+      <span class="badge badge-info">open</span>
+    </div>
+
+    <div class="page-meta">
+      <div class="meta-item">
+        <div class="meta-label">严重程度</div>
+        <div class="meta-value"><span class="badge badge-danger">高</span></div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">提出日期</div>
+        <div class="meta-value">2026 年 5 月 23 日</div>
+      </div>
+      
+    </div>
+
+    <div class="post-content">
+      <h2>问题描述</h2>
+<p>智能安全帽需要实时定位、电子围栏、轨迹记录功能，但定位模块的技术路线尚未确定。工地场景既有室外开阔区域也有室内/半室内环境，单一方案难以覆盖。</p>
+<h2>影响范围</h2>
+<ul>
+<li>实时位置模块的全部功能</li>
+<li>电子围栏精度</li>
+<li>整体功耗设计</li>
+</ul>
+<h2>候选方案</h2>
+<ol>
+<li><strong>GNSS（GPS/北斗）</strong>：室外精度够，室内不可用</li>
+<li><strong>UWB</strong>：精度极高，但功耗和成本高</li>
+<li><strong>BLE 信标</strong>：室内辅助定位，低成本低功耗</li>
+</ol>
+<h2>当前进展</h2>
+<p>正在评估 GNSS + BLE 混合方案，预计下周确定。</p>
+
+    </div>
+
+    
+  </div>
+</div>
+  </main>
+  <footer>
+  <p>&copy; 2026 智能安全帽 &middot; 智慧工地安全解决方案 &middot; Powered by <a href="https://github.com/ysdcedarqu/zhinenganquanmao" target="_blank">GitHub</a></p>
+</footer>
+
+
+  <script>
+    // 滚动淡入
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // 导航栏滚动效果
+    const navbar = document.querySelector('.navbar');
+    let lastScroll = 0;
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      if (scrollY > 100) {
+        navbar.style.boxShadow = '0 4px 30px rgba(0,0,0,0.3), 0 0 20px rgba(0,229,255,0.05)';
+      } else {
+        navbar.style.boxShadow = 'none';
+      }
+      lastScroll = scrollY;
+    });
+  </script>
+</body>
+</html>

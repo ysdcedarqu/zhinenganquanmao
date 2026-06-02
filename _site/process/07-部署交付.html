@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>部署交付 · 智能安全帽 · 项目进度</title>
+  <link rel="stylesheet" href="/anquanmao/assets/css/style.css">
+  
+  <meta name="description" content="智慧工地安全解决方案 — 研发进度汇报">
+  <meta property="og:title" content="部署交付 · 智能安全帽 · 项目进度">
+  <meta property="og:description" content="智慧工地安全解决方案 — 研发进度汇报">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ysdcedarqu.github.io/anquanmao/process/07-部署交付.html">
+  
+</head>
+<body>
+  <nav class="navbar">
+  <div class="navbar-inner">
+    <a href="/anquanmao/" class="logo">
+      <span class="icon">🪖</span> SMART HELMET
+    </a>
+    <ul class="nav-links">
+      <li><a href="/anquanmao/#overview">状态总览</a></li>
+      <li><a href="/anquanmao/#process">研发流程</a></li>
+      <li><a href="/anquanmao/#weekly">周报</a></li>
+      <li><a href="/anquanmao/#issues">问题跟踪</a></li>
+    </ul>
+  </div>
+</nav>
+
+  <main style="padding-top: 68px;">
+    
+<div class="container">
+  <div class="section">
+    <a href="/anquanmao/#process" class="page-back">&larr; 返回流程总览</a>
+
+    <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 0.5rem;">
+      <span style="font-size: 2.4rem; filter: drop-shadow(0 0 12px rgba(0,229,255,0.3));">🚀</span>
+      <div>
+        <p style="font-size: 0.8rem; color: var(--primary); font-weight: 600; letter-spacing: 2px; margin-bottom: 2px;">PHASE 7 / 7</p>
+        <h1 class="page-title" style="margin-bottom: 0;">部署交付</h1>
+      </div>
+      <span class="badge badge-info">未开始</span>
+    </div>
+
+    
+    <div style="margin: 2rem 0;">
+      <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+        <span style="font-size: 0.8rem; color: var(--text-muted); letter-spacing: 1px;">阶段进度</span>
+        <span style="font-size: 0.9rem; color: var(--primary); font-weight: 700;">0%</span>
+      </div>
+      <div class="progress-bar-lg">
+        <div class="progress-fill" style="width: 0%;"></div>
+      </div>
+    </div>
+
+    <div class="post-content">
+      <h2>目标</h2>
+<p>完成量产准备、现场部署和交付验收。</p>
+<h2>主要工作</h2>
+<ul>
+<li><input disabled="" type="checkbox"> 量产 BOM 确认和供应链准备</li>
+<li><input disabled="" type="checkbox"> 生产工艺文件输出</li>
+<li><input disabled="" type="checkbox"> 小批量试产</li>
+<li><input disabled="" type="checkbox"> 云端服务正式部署</li>
+<li><input disabled="" type="checkbox"> 现场安装调试</li>
+<li><input disabled="" type="checkbox"> 用户培训</li>
+<li><input disabled="" type="checkbox"> 验收交付</li>
+</ul>
+<h2>交付物</h2>
+<ul>
+<li>量产版智能安全帽</li>
+<li>云端平台（已部署）</li>
+<li>管理端系统（已部署）</li>
+<li>用户操作手册</li>
+<li>运维文档</li>
+</ul>
+
+    </div>
+
+    <div class="process-nav">
+      <a href="/anquanmao/process/06-集成测试.html" style="color: var(--text-muted);">&larr; 上一阶段</a>
+      <span></span>
+    </div>
+  </div>
+</div>
+  </main>
+  <footer>
+  <p>&copy; 2026 智能安全帽 &middot; 智慧工地安全解决方案 &middot; Powered by <a href="https://github.com/ysdcedarqu/zhinenganquanmao" target="_blank">GitHub</a></p>
+</footer>
+
+
+  <script>
+    // 滚动淡入
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // 导航栏滚动效果
+    const navbar = document.querySelector('.navbar');
+    let lastScroll = 0;
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      if (scrollY > 100) {
+        navbar.style.boxShadow = '0 4px 30px rgba(0,0,0,0.3), 0 0 20px rgba(0,229,255,0.05)';
+      } else {
+        navbar.style.boxShadow = 'none';
+      }
+      lastScroll = scrollY;
+    });
+  </script>
+</body>
+</html>

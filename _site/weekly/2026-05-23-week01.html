@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>第1周 · 项目启动与需求分析 · 智能安全帽 · 项目进度</title>
+  <link rel="stylesheet" href="/anquanmao/assets/css/style.css">
+  
+  <meta name="description" content="智慧工地安全解决方案 — 研发进度汇报">
+  <meta property="og:title" content="第1周 · 项目启动与需求分析 · 智能安全帽 · 项目进度">
+  <meta property="og:description" content="智慧工地安全解决方案 — 研发进度汇报">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ysdcedarqu.github.io/anquanmao/weekly/2026-05-23-week01.html">
+  
+</head>
+<body>
+  <nav class="navbar">
+  <div class="navbar-inner">
+    <a href="/anquanmao/" class="logo">
+      <span class="icon">🪖</span> SMART HELMET
+    </a>
+    <ul class="nav-links">
+      <li><a href="/anquanmao/#overview">状态总览</a></li>
+      <li><a href="/anquanmao/#process">研发流程</a></li>
+      <li><a href="/anquanmao/#weekly">周报</a></li>
+      <li><a href="/anquanmao/#issues">问题跟踪</a></li>
+    </ul>
+  </div>
+</nav>
+
+  <main style="padding-top: 68px;">
+    
+<div class="container">
+  <div class="section">
+    <a href="/anquanmao/#weekly" class="page-back">&larr; 返回周报列表</a>
+
+    <p style="color: var(--primary); font-size: 0.85rem; font-weight: 600; letter-spacing: 1px; margin-bottom: 0.5rem;">
+      2026 年 5 月 23 日
+       &nbsp;·&nbsp; 粤水电智能制造研究院
+       &nbsp;·&nbsp; 填报人：屈雪松 林肖逸
+    </p>
+    <h1 class="page-title">第1周 · 项目启动与需求分析</h1>
+
+    
+    <div style="margin: 1.5rem 0 2rem; max-width: 480px;">
+      <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+        <span style="font-size: 0.8rem; color: var(--text-muted); letter-spacing: 1px;">本周进度</span>
+        <span style="font-size: 0.85rem; color: var(--primary); font-weight: 700;">10%</span>
+      </div>
+      <div class="progress-bar-lg">
+        <div class="progress-fill" style="width: 10%;"></div>
+      </div>
+    </div>
+
+    <div class="post-content">
+      <h2>本周完成</h2>
+<ul>
+<li>项目正式立项，明确智能安全帽产品定位与目标</li>
+<li>确定智能安全帽九大功能模块及优先级</li>
+<li>梳理各模块技术路线（6/9 已确定）</li>
+<li>完成项目仓库搭建和 GitHub Pages 着陆页</li>
+<li>建立周报制度、问题跟踪机制</li>
+</ul>
+<h2>项目概述</h2>
+<p>「智能安全帽」定位为面向智慧工地场景的综合安全解决方案，核心价值在于：</p>
+<ol>
+<li><strong>安全兜底</strong>：通过佩戴检测、姿态监测、应急呼救等手段，降低工地安全事故风险</li>
+<li><strong>管理提效</strong>：实时定位、电子围栏、轨迹记录辅助现场人员调度与安全管理</li>
+<li><strong>远程协同</strong>：语音对讲 + 视频采集 + 云端 AI，打通现场与后台的信息壁垒</li>
+</ol>
+<p>目标用户：建筑工地工人、安全管理人员、项目负责人。</p>
+<h2>需求分析进展</h2>
+<p>已完成功能模块初步梳理：</p>
+<table>
+<thead>
+<tr>
+<th>模块</th>
+<th>状态</th>
+<th>技术路线</th>
+<th>难点 &amp; 备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>佩戴合规</td>
+<td>✅ 已确定</td>
+<td>霍尔传感器 + 磁贴，锁扣检测戴帽状态</td>
+<td>需考虑误触发和抗干扰</td>
+</tr>
+<tr>
+<td>姿态监测</td>
+<td>✅ 已确定</td>
+<td>六轴 IMU（加速度 + 陀螺仪）+ 防抖前馈</td>
+<td>跌倒检测算法是关键，需大量数据训练</td>
+</tr>
+<tr>
+<td>实时位置</td>
+<td>❓ 待确定</td>
+<td>需对比 GNSS/UWB/BLE 方案</td>
+<td>工地室内外混合场景，单方案难覆盖，倾向 GNSS+BLE 混合</td>
+</tr>
+<tr>
+<td>应急呼救</td>
+<td>❓ 待确定</td>
+<td>SOS 实体按键 + 蜂鸣器报警</td>
+<td>基本方案明确，按键防误触、报警音量等细节待定</td>
+</tr>
+<tr>
+<td>语音交互</td>
+<td>❓ 待确定</td>
+<td>麦克风阵列 + 扬声器，语音播报/对讲</td>
+<td>音频芯片选型、噪声环境下的拾音效果是挑战</td>
+</tr>
+<tr>
+<td>电源</td>
+<td>✅ 已确定</td>
+<td>3500–7000mAh 可拆卸锂电池（12V）</td>
+<td>续航目标 ≥ 8h，需平衡容量与重量</td>
+</tr>
+<tr>
+<td>视频采集</td>
+<td>✅ 已确定</td>
+<td>1080P 摄像头 + SD 卡存储</td>
+<td>AI 云端识别对分辨率要求不高，可降至 720P 以节省带宽和存储</td>
+</tr>
+<tr>
+<td>照明灯</td>
+<td>✅ 已确定</td>
+<td>LED 光源</td>
+<td>低优先级辅助功能</td>
+</tr>
+<tr>
+<td>状态上报</td>
+<td>✅ 已确定</td>
+<td>4G 模块（CAT-1 或 CAT-4）</td>
+<td>需评估不同 4G 模组的功耗、成本和运营商覆盖</td>
+</tr>
+<tr>
+<td>视频图片上传</td>
+<td>❓ 待确定</td>
+<td>4G 上传图片/视频至云端进行 AI 识别</td>
+<td>上传策略（实时/定时）、压缩格式、断点续传等方案待定</td>
+</tr>
+</tbody></table>
+<h3>各模块需求要点</h3>
+<p><strong>佩戴合规</strong>：安全帽的核心诉求。通过帽带锁扣处的霍尔传感器检测磁贴是否到位，判断工人是否正确佩戴。需避免弯腰、转头等动作造成的误判。</p>
+<p><strong>姿态监测</strong>：六轴 IMU 持续采集加速度和角速度数据，通过嵌入式算法实时判断人员是否跌倒或遭受撞击。该模块直接关系到人员安全，误报率和漏报率是关键指标。</p>
+<p><strong>实时位置</strong>：最复杂的模块。工地场景同时包含：</p>
+<ul>
+<li>室外开阔区（适合 GNSS）</li>
+<li>室内/半室内区域如地下室、钢结构内部（GNSS 信号弱）</li>
+<li>垂直维度（楼层定位）</li>
+</ul>
+<p>初步倾向 <strong>GNSS（室外）+ BLE 信标（室内辅助）</strong> 混合方案，下周重点调研。</p>
+<p><strong>应急呼救</strong>：一键 SOS 触发蜂鸣器现场警报 + 4G 上报云端通知管理人员。实体按键要求醒目、防误触（如长按 3 秒触发）。</p>
+<p><strong>语音交互</strong>：支持双向对讲和语音播报。噪声工地环境对麦克风阵列的降噪能力要求高，需在芯片选型阶段重点评估。</p>
+<p><strong>视频图片上传</strong>：通过 4G 模块将安全帽采集的图片/视频上传至云端进行 AI 识别分析。待确定的要点包括：</p>
+<ul>
+<li>上传触发策略（实时上传 vs 定时批量上传 vs 事件触发上传）</li>
+<li>图片压缩格式与质量参数（平衡带宽与 AI 识别准确率）</li>
+<li>视频分段上传与断点续传机制</li>
+<li>离线缓存策略（4G 信号不佳时本地暂存）</li>
+</ul>
+<h2>关键决策</h2>
+<ul>
+<li><strong>电源方案</strong>：采用可拆卸单块锂电池设计，容量 3500–7000mAh，电压 12V。理由：① 便于更换，减少停工时间；② 单块设计降低结构复杂度；③ 容量区间为后续根据实测功耗调整留出余地</li>
+<li><strong>数据传输</strong>：选用 4G 模块进行状态上报和云端通信，暂不考虑 WiFi（工地覆盖差）和 NB-IoT（带宽不足以支撑图片上传）</li>
+<li><strong>视频分辨率</strong>：云端 AI 识别对画质要求不高，建议降至 720P，以平衡清晰度与传输带宽/存储成本</li>
+<li><strong>照明灯</strong>：作为辅助功能保留，优先级最低，可在后期迭代中视需求决定是否保留</li>
+</ul>
+<h2>待解决问题</h2>
+<p>本周识别出 4 项待定事项，已录入问题跟踪系统：</p>
+<table>
+<thead>
+<tr>
+<th>日期</th>
+<th>问题</th>
+<th>严重程度</th>
+<th>状态</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>05-23</td>
+<td>定位模块技术路线未确定</td>
+<td>高</td>
+<td>未解决</td>
+</tr>
+<tr>
+<td>05-23</td>
+<td>音频模块选型待调研</td>
+<td>中</td>
+<td>未解决</td>
+</tr>
+<tr>
+<td>05-23</td>
+<td>应急呼救功能细节待定</td>
+<td>低</td>
+<td>未解决</td>
+</tr>
+<tr>
+<td>05-23</td>
+<td>视频图片上传方案未确定</td>
+<td>中</td>
+<td>未解决</td>
+</tr>
+</tbody></table>
+<h2>风险与应对</h2>
+<table>
+<thead>
+<tr>
+<th>风险</th>
+<th>可能性</th>
+<th>影响</th>
+<th>应对措施</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>定位方案选型耗时过长</td>
+<td>中</td>
+<td>高</td>
+<td>限定下周完成调研，若无法达成共识则采用 GNSS 为主方案先行启动</td>
+</tr>
+<tr>
+<td>功耗预算超标</td>
+<td>中</td>
+<td>高</td>
+<td>各模块选型阶段即纳入功耗评估，预留 20% 余量</td>
+</tr>
+<tr>
+<td>供应链物料短缺</td>
+<td>低</td>
+<td>中</td>
+<td>关键芯片提前锁定替代型号</td>
+</tr>
+</tbody></table>
+<h2>下周计划</h2>
+<ol>
+<li>完成剩余 3 个模块的技术路线确认（定位、音频、应急呼救）</li>
+<li>正式启动方案设计阶段，输出系统架构图</li>
+<li>调研 GNSS + BLE 混合定位方案的可行性与成本</li>
+<li>调研主流音频 Codec 芯片方案（如 ES8388、WM8960 等）</li>
+<li>明确应急呼救的按键交互逻辑和报警策略</li>
+<li>调研视频图片上传方案（上传策略、压缩格式、断点续传）</li>
+<li>开始整理需求规格文档（SRS）初稿</li>
+</ol>
+
+    </div>
+
+    
+    <div class="info-panel panel-danger">
+      <h3>遇到的问题</h3>
+      <ul><li>定位模块技术路线尚未确定（GNSS vs UWB vs BLE）</li><li>音频模块选型待调研</li><li>应急呼救功能细节待定</li><li>视频图片上传方案未确定（上传策略、压缩格式、断点续传）</li></ul>
+    </div>
+    
+    <div class="info-panel panel-success">
+      <h3>下周计划</h3>
+      <ul><li>完成全部功能模块需求确认</li><li>启动方案设计阶段</li><li>调研定位模块技术路线</li><li>调研音频模块芯片方案</li><li>调研应急呼救具体实现细节</li><li>调研视频图片上传方案（上传策略、压缩格式）</li></ul>
+    </div>
+  </div>
+</div>
+  </main>
+  <footer>
+  <p>&copy; 2026 智能安全帽 &middot; 智慧工地安全解决方案 &middot; Powered by <a href="https://github.com/ysdcedarqu/zhinenganquanmao" target="_blank">GitHub</a></p>
+</footer>
+
+
+  <script>
+    // 滚动淡入
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // 导航栏滚动效果
+    const navbar = document.querySelector('.navbar');
+    let lastScroll = 0;
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      if (scrollY > 100) {
+        navbar.style.boxShadow = '0 4px 30px rgba(0,0,0,0.3), 0 0 20px rgba(0,229,255,0.05)';
+      } else {
+        navbar.style.boxShadow = 'none';
+      }
+      lastScroll = scrollY;
+    });
+  </script>
+</body>
+</html>

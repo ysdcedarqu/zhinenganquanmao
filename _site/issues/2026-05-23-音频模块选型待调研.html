@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>音频模块选型待调研 · 智能安全帽 · 项目进度</title>
+  <link rel="stylesheet" href="/anquanmao/assets/css/style.css">
+  
+  <meta name="description" content="智慧工地安全解决方案 — 研发进度汇报">
+  <meta property="og:title" content="音频模块选型待调研 · 智能安全帽 · 项目进度">
+  <meta property="og:description" content="智慧工地安全解决方案 — 研发进度汇报">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ysdcedarqu.github.io/anquanmao/issues/2026-05-23-音频模块选型待调研.html">
+  
+</head>
+<body>
+  <nav class="navbar">
+  <div class="navbar-inner">
+    <a href="/anquanmao/" class="logo">
+      <span class="icon">🪖</span> SMART HELMET
+    </a>
+    <ul class="nav-links">
+      <li><a href="/anquanmao/#overview">状态总览</a></li>
+      <li><a href="/anquanmao/#process">研发流程</a></li>
+      <li><a href="/anquanmao/#weekly">周报</a></li>
+      <li><a href="/anquanmao/#issues">问题跟踪</a></li>
+    </ul>
+  </div>
+</nav>
+
+  <main style="padding-top: 68px;">
+    
+<div class="container">
+  <div class="section">
+    <a href="/anquanmao/#issues" class="page-back">&larr; 返回问题列表</a>
+
+    <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 1rem;">
+      <h1 class="page-title" style="margin-bottom: 0;">音频模块选型待调研</h1>
+      <span class="badge badge-success">closed</span>
+    </div>
+
+    <div class="page-meta">
+      <div class="meta-item">
+        <div class="meta-label">严重程度</div>
+        <div class="meta-value"><span class="badge badge-warning">中</span></div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">提出日期</div>
+        <div class="meta-value">2026 年 6 月 1 日</div>
+      </div>
+      
+    </div>
+
+    <div class="post-content">
+      <h2>问题描述</h2>
+<p>语音交互功能需要麦克风阵列 + 扬声器，支持语音播报和对讲，但音频模块的具体芯片方案尚未确定。</p>
+<h2>影响范围</h2>
+<ul>
+<li>语音交互模块开发进度</li>
+<li>安全帽内部空间布局（麦克风阵列位置）</li>
+<li>功耗预算</li>
+</ul>
+<h2>当前进展</h2>
+<p>需求已明确，等待进入方案设计阶段后进行选型。</p>
+
+    </div>
+
+    
+  </div>
+</div>
+  </main>
+  <footer>
+  <p>&copy; 2026 智能安全帽 &middot; 智慧工地安全解决方案 &middot; Powered by <a href="https://github.com/ysdcedarqu/zhinenganquanmao" target="_blank">GitHub</a></p>
+</footer>
+
+
+  <script>
+    // 滚动淡入
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // 导航栏滚动效果
+    const navbar = document.querySelector('.navbar');
+    let lastScroll = 0;
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      if (scrollY > 100) {
+        navbar.style.boxShadow = '0 4px 30px rgba(0,0,0,0.3), 0 0 20px rgba(0,229,255,0.05)';
+      } else {
+        navbar.style.boxShadow = 'none';
+      }
+      lastScroll = scrollY;
+    });
+  </script>
+</body>
+</html>

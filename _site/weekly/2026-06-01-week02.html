@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>第2周 · 需求分析收尾与方案设计启动 · 智能安全帽 · 项目进度</title>
+  <link rel="stylesheet" href="/anquanmao/assets/css/style.css">
+  
+  <meta name="description" content="智慧工地安全解决方案 — 研发进度汇报">
+  <meta property="og:title" content="第2周 · 需求分析收尾与方案设计启动 · 智能安全帽 · 项目进度">
+  <meta property="og:description" content="智慧工地安全解决方案 — 研发进度汇报">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ysdcedarqu.github.io/anquanmao/weekly/2026-06-01-week02.html">
+  
+</head>
+<body>
+  <nav class="navbar">
+  <div class="navbar-inner">
+    <a href="/anquanmao/" class="logo">
+      <span class="icon">🪖</span> SMART HELMET
+    </a>
+    <ul class="nav-links">
+      <li><a href="/anquanmao/#overview">状态总览</a></li>
+      <li><a href="/anquanmao/#process">研发流程</a></li>
+      <li><a href="/anquanmao/#weekly">周报</a></li>
+      <li><a href="/anquanmao/#issues">问题跟踪</a></li>
+    </ul>
+  </div>
+</nav>
+
+  <main style="padding-top: 68px;">
+    
+<div class="container">
+  <div class="section">
+    <a href="/anquanmao/#weekly" class="page-back">&larr; 返回周报列表</a>
+
+    <p style="color: var(--primary); font-size: 0.85rem; font-weight: 600; letter-spacing: 1px; margin-bottom: 0.5rem;">
+      2026 年 5 月 30 日
+      
+      
+    </p>
+    <h1 class="page-title">第2周 · 需求分析收尾与方案设计启动</h1>
+
+    
+    <div style="margin: 1.5rem 0 2rem; max-width: 480px;">
+      <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+        <span style="font-size: 0.8rem; color: var(--text-muted); letter-spacing: 1px;">本周进度</span>
+        <span style="font-size: 0.85rem; color: var(--primary); font-weight: 700;">20%</span>
+      </div>
+      <div class="progress-bar-lg">
+        <div class="progress-fill" style="width: 20%;"></div>
+      </div>
+    </div>
+
+    <div class="post-content">
+      <h2>本周完成</h2>
+<ul>
+<li>推进需求分析，完成应急呼救和语音交互模块细节梳理</li>
+<li>启动定位模块技术选型调研（GNSS vs UWB vs BLE）</li>
+</ul>
+<h2>定位模块方案对比</h2>
+<table>
+<thead>
+<tr>
+<th>方案</th>
+<th>精度</th>
+<th>功耗</th>
+<th>成本</th>
+<th>适用场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GNSS（GPS/北斗）</td>
+<td>5-10m</td>
+<td>中</td>
+<td>低</td>
+<td>室外开阔区域</td>
+</tr>
+<tr>
+<td>UWB</td>
+<td>10-30cm</td>
+<td>高</td>
+<td>高</td>
+<td>室内精确定位</td>
+</tr>
+<tr>
+<td>BLE 信标</td>
+<td>1-5m</td>
+<td>低</td>
+<td>低</td>
+<td>室内区域</td>
+</tr>
+</tbody></table>
+<p>初步倾向 <strong>GNSS + BLE 混合方案</strong>：室外用 GNSS，室内用 BLE 信标辅助定位，兼顾精度和功耗。</p>
+<h2>下一步</h2>
+<p>本周继续推进定位模块选型，同时启动安全帽内部模块布局的方案设计。</p>
+
+    </div>
+
+    
+    <div class="info-panel panel-danger">
+      <h3>遇到的问题</h3>
+      <ul><li>定位模块方案对比尚未完成</li></ul>
+    </div>
+    
+    <div class="info-panel panel-success">
+      <h3>下周计划</h3>
+      <ul><li>完成定位模块技术选型</li><li>确定音频模块方案</li><li>开始安全帽内部模块布局设计</li></ul>
+    </div>
+  </div>
+</div>
+  </main>
+  <footer>
+  <p>&copy; 2026 智能安全帽 &middot; 智慧工地安全解决方案 &middot; Powered by <a href="https://github.com/ysdcedarqu/zhinenganquanmao" target="_blank">GitHub</a></p>
+</footer>
+
+
+  <script>
+    // 滚动淡入
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // 导航栏滚动效果
+    const navbar = document.querySelector('.navbar');
+    let lastScroll = 0;
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      if (scrollY > 100) {
+        navbar.style.boxShadow = '0 4px 30px rgba(0,0,0,0.3), 0 0 20px rgba(0,229,255,0.05)';
+      } else {
+        navbar.style.boxShadow = 'none';
+      }
+      lastScroll = scrollY;
+    });
+  </script>
+</body>
+</html>

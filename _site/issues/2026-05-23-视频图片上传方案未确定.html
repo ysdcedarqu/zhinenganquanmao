@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>视频图片上传方案未确定 · 智能安全帽 · 项目进度</title>
+  <link rel="stylesheet" href="/anquanmao/assets/css/style.css">
+  
+  <meta name="description" content="智慧工地安全解决方案 — 研发进度汇报">
+  <meta property="og:title" content="视频图片上传方案未确定 · 智能安全帽 · 项目进度">
+  <meta property="og:description" content="智慧工地安全解决方案 — 研发进度汇报">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ysdcedarqu.github.io/anquanmao/issues/2026-05-23-视频图片上传方案未确定.html">
+  
+</head>
+<body>
+  <nav class="navbar">
+  <div class="navbar-inner">
+    <a href="/anquanmao/" class="logo">
+      <span class="icon">🪖</span> SMART HELMET
+    </a>
+    <ul class="nav-links">
+      <li><a href="/anquanmao/#overview">状态总览</a></li>
+      <li><a href="/anquanmao/#process">研发流程</a></li>
+      <li><a href="/anquanmao/#weekly">周报</a></li>
+      <li><a href="/anquanmao/#issues">问题跟踪</a></li>
+    </ul>
+  </div>
+</nav>
+
+  <main style="padding-top: 68px;">
+    
+<div class="container">
+  <div class="section">
+    <a href="/anquanmao/#issues" class="page-back">&larr; 返回问题列表</a>
+
+    <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 1rem;">
+      <h1 class="page-title" style="margin-bottom: 0;">视频图片上传方案未确定</h1>
+      <span class="badge badge-info">open</span>
+    </div>
+
+    <div class="page-meta">
+      <div class="meta-item">
+        <div class="meta-label">严重程度</div>
+        <div class="meta-value"><span class="badge badge-warning">中</span></div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">提出日期</div>
+        <div class="meta-value">2026 年 5 月 23 日</div>
+      </div>
+      
+    </div>
+
+    <div class="post-content">
+      <h2>问题描述</h2>
+<p>安全帽通过摄像头采集图片/视频后，需经 4G 模块上传至云端进行 AI 识别分析。但以下上传方案细节尚未确定：</p>
+<ul>
+<li><strong>上传触发策略</strong>：实时上传（拍一张传一张）、定时批量上传（每 N 分钟打包上传）、事件触发上传（仅异常事件时上传），各有优劣</li>
+<li><strong>图片压缩格式与参数</strong>：JPEG/WebP 格式选择、压缩质量参数需在带宽消耗与 AI 识别准确率之间取得平衡</li>
+<li><strong>视频分段上传与断点续传</strong>：视频文件较大，需支持分段上传和网络中断后的续传</li>
+<li><strong>离线缓存策略</strong>：4G 信号不稳定或无覆盖时，本地暂存机制及容量管理</li>
+</ul>
+<h2>影响范围</h2>
+<ul>
+<li>云端 AI 识别的实时性</li>
+<li>4G 流量消耗与运营成本</li>
+<li>安全帽本地存储（SD 卡/TF 卡）的空间管理</li>
+<li>整体功耗（频繁上传会增加功耗）</li>
+</ul>
+<h2>候选方案</h2>
+<ol>
+<li><strong>事件触发 + 定时补充</strong>：异常事件实时上传图片，正常画面定时批量上传。兼顾实时性与流量</li>
+<li><strong>纯实时上传</strong>：采集即上传，实时性最高，但流量和功耗最大</li>
+<li><strong>纯离线 + WiFi 批量同步</strong>：本地存储，回到有 WiFi 的环境统一上传。流量成本最低，但实时性差</li>
+</ol>
+<h2>当前进展</h2>
+<p>已在周报中标记为待定事项，将在方案设计阶段与 4G 模组选型一并确定。</p>
+
+    </div>
+
+    
+  </div>
+</div>
+  </main>
+  <footer>
+  <p>&copy; 2026 智能安全帽 &middot; 智慧工地安全解决方案 &middot; Powered by <a href="https://github.com/ysdcedarqu/zhinenganquanmao" target="_blank">GitHub</a></p>
+</footer>
+
+
+  <script>
+    // 滚动淡入
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // 导航栏滚动效果
+    const navbar = document.querySelector('.navbar');
+    let lastScroll = 0;
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      if (scrollY > 100) {
+        navbar.style.boxShadow = '0 4px 30px rgba(0,0,0,0.3), 0 0 20px rgba(0,229,255,0.05)';
+      } else {
+        navbar.style.boxShadow = 'none';
+      }
+      lastScroll = scrollY;
+    });
+  </script>
+</body>
+</html>

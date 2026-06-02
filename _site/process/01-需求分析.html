@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>需求分析 · 智能安全帽 · 项目进度</title>
+  <link rel="stylesheet" href="/anquanmao/assets/css/style.css">
+  
+  <meta name="description" content="智慧工地安全解决方案 — 研发进度汇报">
+  <meta property="og:title" content="需求分析 · 智能安全帽 · 项目进度">
+  <meta property="og:description" content="智慧工地安全解决方案 — 研发进度汇报">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ysdcedarqu.github.io/anquanmao/process/01-需求分析.html">
+  
+</head>
+<body>
+  <nav class="navbar">
+  <div class="navbar-inner">
+    <a href="/anquanmao/" class="logo">
+      <span class="icon">🪖</span> SMART HELMET
+    </a>
+    <ul class="nav-links">
+      <li><a href="/anquanmao/#overview">状态总览</a></li>
+      <li><a href="/anquanmao/#process">研发流程</a></li>
+      <li><a href="/anquanmao/#weekly">周报</a></li>
+      <li><a href="/anquanmao/#issues">问题跟踪</a></li>
+    </ul>
+  </div>
+</nav>
+
+  <main style="padding-top: 68px;">
+    
+<div class="container">
+  <div class="section">
+    <a href="/anquanmao/#process" class="page-back">&larr; 返回流程总览</a>
+
+    <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 0.5rem;">
+      <span style="font-size: 2.4rem; filter: drop-shadow(0 0 12px rgba(0,229,255,0.3));">📋</span>
+      <div>
+        <p style="font-size: 0.8rem; color: var(--primary); font-weight: 600; letter-spacing: 2px; margin-bottom: 2px;">PHASE 1 / 7</p>
+        <h1 class="page-title" style="margin-bottom: 0;">需求分析</h1>
+      </div>
+      <span class="badge badge-warning">进行中</span>
+    </div>
+
+    
+    <div style="margin: 2rem 0;">
+      <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+        <span style="font-size: 0.8rem; color: var(--text-muted); letter-spacing: 1px;">阶段进度</span>
+        <span style="font-size: 0.9rem; color: var(--primary); font-weight: 700;">60%</span>
+      </div>
+      <div class="progress-bar-lg">
+        <div class="progress-fill" style="width: 60%;"></div>
+      </div>
+    </div>
+
+    <div class="post-content">
+      <h2>目标</h2>
+<p>明确智能安全帽的全部功能需求、使用场景和性能指标，输出需求规格文档。</p>
+<h2>主要工作</h2>
+<ul>
+<li><input checked="" disabled="" type="checkbox"> 确定九大功能模块</li>
+<li><input checked="" disabled="" type="checkbox"> 梳理各模块技术路线（已确定 6/9）</li>
+<li><input disabled="" type="checkbox"> 确定定位模块技术路线</li>
+<li><input disabled="" type="checkbox"> 确定音频模块技术路线</li>
+<li><input disabled="" type="checkbox"> 明确应急呼救功能细节</li>
+<li><input disabled="" type="checkbox"> 输出需求规格文档</li>
+</ul>
+<h2>使用场景</h2>
+<ol>
+<li><strong>工地日常巡检</strong>：佩戴检测 + 实时定位 + 状态上报</li>
+<li><strong>危险区域作业</strong>：电子围栏 + 跌倒检测 + 应急呼救</li>
+<li><strong>远程协作</strong>：语音对讲 + 视频采集 + 云端 AI 识别</li>
+</ol>
+<h2>性能指标（待确认）</h2>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>目标值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>续航时间</td>
+<td>≥ 8h（典型工况）</td>
+</tr>
+<tr>
+<td>定位精度</td>
+<td>室外 ≤ 10m，室内待定</td>
+</tr>
+<tr>
+<td>跌倒检测响应</td>
+<td>≤ 3s</td>
+</tr>
+<tr>
+<td>SOS 响应</td>
+<td>≤ 1s</td>
+</tr>
+<tr>
+<td>工作温度</td>
+<td>-10°C ~ 50°C</td>
+</tr>
+</tbody></table>
+
+    </div>
+
+    <div class="process-nav">
+      <span></span>
+      <a href="/anquanmao/process/02-方案设计.html" style="color: var(--primary);">下一阶段 &rarr;</a>
+    </div>
+  </div>
+</div>
+  </main>
+  <footer>
+  <p>&copy; 2026 智能安全帽 &middot; 智慧工地安全解决方案 &middot; Powered by <a href="https://github.com/ysdcedarqu/zhinenganquanmao" target="_blank">GitHub</a></p>
+</footer>
+
+
+  <script>
+    // 滚动淡入
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // 导航栏滚动效果
+    const navbar = document.querySelector('.navbar');
+    let lastScroll = 0;
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      if (scrollY > 100) {
+        navbar.style.boxShadow = '0 4px 30px rgba(0,0,0,0.3), 0 0 20px rgba(0,229,255,0.05)';
+      } else {
+        navbar.style.boxShadow = 'none';
+      }
+      lastScroll = scrollY;
+    });
+  </script>
+</body>
+</html>

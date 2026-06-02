@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>应急呼救功能细节待定 · 智能安全帽 · 项目进度</title>
+  <link rel="stylesheet" href="/anquanmao/assets/css/style.css">
+  
+  <meta name="description" content="智慧工地安全解决方案 — 研发进度汇报">
+  <meta property="og:title" content="应急呼救功能细节待定 · 智能安全帽 · 项目进度">
+  <meta property="og:description" content="智慧工地安全解决方案 — 研发进度汇报">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ysdcedarqu.github.io/anquanmao/issues/2026-05-23-应急呼救功能细节待定.html">
+  
+</head>
+<body>
+  <nav class="navbar">
+  <div class="navbar-inner">
+    <a href="/anquanmao/" class="logo">
+      <span class="icon">🪖</span> SMART HELMET
+    </a>
+    <ul class="nav-links">
+      <li><a href="/anquanmao/#overview">状态总览</a></li>
+      <li><a href="/anquanmao/#process">研发流程</a></li>
+      <li><a href="/anquanmao/#weekly">周报</a></li>
+      <li><a href="/anquanmao/#issues">问题跟踪</a></li>
+    </ul>
+  </div>
+</nav>
+
+  <main style="padding-top: 68px;">
+    
+<div class="container">
+  <div class="section">
+    <a href="/anquanmao/#issues" class="page-back">&larr; 返回问题列表</a>
+
+    <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 1rem;">
+      <h1 class="page-title" style="margin-bottom: 0;">应急呼救功能细节待定</h1>
+      <span class="badge badge-info">open</span>
+    </div>
+
+    <div class="page-meta">
+      <div class="meta-item">
+        <div class="meta-label">严重程度</div>
+        <div class="meta-value"><span class="badge badge-info">低</span></div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">提出日期</div>
+        <div class="meta-value">2026 年 5 月 23 日</div>
+      </div>
+      
+    </div>
+
+    <div class="post-content">
+      <h2>问题描述</h2>
+<p>应急呼救功能基本方案已明确（SOS 实体按键 + 蜂鸣器报警 + 4G 上报云端），但以下细节尚未确定：</p>
+<ul>
+<li>按键交互逻辑（短按/长按？长按多长时间触发？）</li>
+<li>误触防护策略（如何避免口袋挤压、弯腰等场景误触发）</li>
+<li>蜂鸣器音量标准（工地噪声环境下需多大分贝）</li>
+<li>取消报警机制（误触发后如何撤销）</li>
+<li>与4G模块的联动逻辑（SOS 上报优先级、重试策略）</li>
+</ul>
+<h2>影响范围</h2>
+<ul>
+<li>应急呼救模块的用户体验</li>
+<li>安全帽物理按键布局设计</li>
+<li>固件事件处理逻辑</li>
+</ul>
+<h2>候选方案</h2>
+<ol>
+<li><strong>长按 3 秒触发 + 短按取消</strong>：简单直观，但工地手套操作可能不灵敏</li>
+<li><strong>双键组合触发</strong>：防误触效果好，但操作复杂度增加</li>
+<li><strong>物理保护盖 + 单键</strong>：硬件上防误触，增加结构成本</li>
+</ol>
+<h2>当前进展</h2>
+<p>将在方案设计阶段结合硬件选型一并确定，预计第 2–3 周完成。</p>
+
+    </div>
+
+    
+  </div>
+</div>
+  </main>
+  <footer>
+  <p>&copy; 2026 智能安全帽 &middot; 智慧工地安全解决方案 &middot; Powered by <a href="https://github.com/ysdcedarqu/zhinenganquanmao" target="_blank">GitHub</a></p>
+</footer>
+
+
+  <script>
+    // 滚动淡入
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // 导航栏滚动效果
+    const navbar = document.querySelector('.navbar');
+    let lastScroll = 0;
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      if (scrollY > 100) {
+        navbar.style.boxShadow = '0 4px 30px rgba(0,0,0,0.3), 0 0 20px rgba(0,229,255,0.05)';
+      } else {
+        navbar.style.boxShadow = 'none';
+      }
+      lastScroll = scrollY;
+    });
+  </script>
+</body>
+</html>
