@@ -15,7 +15,7 @@ const CONFIG = {
   title: '智能安全帽 · 项目进度',
   description: '智慧工地安全解决方案 — 研发进度汇报',
   url: 'https://ysdcedarqu.github.io',
-  baseurl: '/zhinenganquanmao',
+  baseurl: '/anquanmao',
   sourceDir: __dirname + '/..',
   outputDir: path.join(__dirname, '..', '_site'),
 };
