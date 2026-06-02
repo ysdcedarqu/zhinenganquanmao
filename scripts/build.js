@@ -84,9 +84,12 @@ function collectData() {
   // 收集周报 (_posts/weekly/*.md)
   const postsDir = path.join(SOURCE, '_posts', 'weekly');
   if (fs.existsSync(postsDir)) {
-    fs.readdirSync(postsDir).filter(f => f.endsWith('.md')).forEach(f => {
+    fs.readdirSync(postsDir)
+      .filter(f => f.endsWith('.md') && f !== 'TEMPLATE.md')
+      .forEach(f => {
       const raw = fs.readFileSync(path.join(postsDir, f), 'utf-8');
       const { data: fm, content } = matter(raw);
+      if (fm.published === false) return; // 跳过未发布
       data.posts.push({
         ...fm,
         content: marked.parse(content),
@@ -96,8 +99,12 @@ function collectData() {
       });
     });
   }
-  // 按日期倒序
-  data.posts.sort((a, b) => parseDate(b.date) - parseDate(a.date));
+  // 按日期倒序，无效日期的排到最后
+  data.posts.sort((a, b) => {
+    const da = parseDate(a.date);
+    const db = parseDate(b.date);
+    return db - da;
+  });
 
   // 收集问题 (_issues/*.md)
   const issuesDir = path.join(SOURCE, '_issues');
