@@ -11,10 +11,6 @@
 
 ## 产品图
 
-![ESP32-S31-Korvo-1 V1.1 开发板](https://ysdcedarqu.github.io/zhinenganquanmao/assets/images/esp31-korvo-0.png)
-
-*ESP32-S31-Korvo-1 V1.1 — 板载 ESP32-S31-WROOM-3 模组*
-
 ![ESP32-S31-Korvo-1 V1.1 组件标注](https://ysdcedarqu.github.io/zhinenganquanmao/assets/images/esp31-korvo-1.png)
 
 *开发板组件标注（点击放大视图）*

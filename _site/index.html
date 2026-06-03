@@ -208,7 +208,7 @@
 </blockquote>
 <h3>一、方案概述</h3>
 <p><img src="https://ysdcedarqu.github.io/zhinenganquanmao/assets/images/orangepi-zero3w-back.webp" alt="Orange Pi Zero 3W 背面"><br><em>▲ Orange Pi Zero 3W — 全志 A733 八核，65×32mm，5–15W</em></p>
-<p><img src="https://ysdcedarqu.github.io/zhinenganquanmao/assets/images/esp31-korvo-0.png" alt="ESP32-S31-Korvo-1"><br><em>▲ ESP32-S31-Korvo-1 — 板载 S31-WROOM-3，Wi-Fi 6 + BT 5.4，~1W</em></p>
+<p><img src="https://ysdcedarqu.github.io/zhinenganquanmao/assets/images/esp31-korvo-1.png" alt="ESP32-S31-Korvo-1 组件标注"><br><em>▲ ESP32-S31-Korvo-1 V1.1 组件标注：① 双麦克风 ② ES8389 Codec ③ 扬声器接口 ④ 摄像头连接器 ⑤ microSD 卡槽 ⑥ 功能按键 ⑦ RGB LED</em></p>
 <table>
 <thead>
 <tr>
@@ -332,6 +332,8 @@
 <td align="left">S31 适合密闭帽体</td>
 </tr>
 </tbody></table>
+<p><img src="https://ysdcedarqu.github.io/zhinenganquanmao/assets/images/orangepi-zero3w-pinout.webp" alt="Orange Pi Zero 3W 引脚图"><br><em>▲ Orange Pi Zero 3W 40PIN GPIO 引脚定义</em></p>
+<p><img src="https://ysdcedarqu.github.io/zhinenganquanmao/assets/images/esp31-korvo-2.png" alt="ESP32-S31-Korvo-1 功能框图"><br><em>▲ ESP32-S31-Korvo-1 电气功能框图 — 展示芯片、音频、摄像头、存储、供电各子系统互联</em></p>
 <h3>三、关键维度深度分析</h3>
 <h4>3.1 功耗与续航 ⭐ 决定性因素</h4>
 <table>
@@ -555,7 +557,16 @@
 </tr>
 </tbody></table>
 <p><strong>结论</strong>：量产阶段 S31 方案 BOM 仅为 OPi 的 1/3–1/2，且全集成单板省去模组间连接器和线缆，可靠性更高。</p>
-<h4>3.6 安全帽适配性</h4>
+<h4>3.6 Korvo-1 参考设计资源</h4>
+<p>ESP32-S31-Korvo-1 V1.1 开发板提供了可直接复用的原理图参考：</p>
+<p><img src="https://ysdcedarqu.github.io/zhinenganquanmao/assets/images/esp31-korvo-3.png" alt="USB 电源供电方案"><br><em>▲ USB 电源供电 — 双 Type-C 口冗余供电，Buck 降压至 3.3V 系统供电</em></p>
+<p><img src="https://ysdcedarqu.github.io/zhinenganquanmao/assets/images/esp31-korvo-4.png" alt="音频独立供电方案"><br><em>▲ 音频独立供电 — 5V→3.3V LDO 为音频电路独立供电，隔离数字噪声，对工地嘈杂环境至关重要</em></p>
+<p><img src="https://ysdcedarqu.github.io/zhinenganquanmao/assets/images/esp31-korvo-5.png" alt="microSD 卡功能"><br><em>▲ microSD 卡槽 — SDIO 3.0 4-bit 模式，用于本地视频/日志存储</em></p>
+<p><img src="https://ysdcedarqu.github.io/zhinenganquanmao/assets/images/esp31-korvo-6.png" alt="SPI NAND Flash 功能"><br><em>▲ SPI NAND Flash（默认不上件）— 与 microSD 复用 GPIO，按需选焊</em></p>
+<blockquote>
+<p>以上四张图为 Korvo-1 官方原理图截图，安全帽自画板可直接复用这些子系统的设计。</p>
+</blockquote>
+<h4>3.7 安全帽适配性</h4>
 <table>
 <thead>
 <tr>
