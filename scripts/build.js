@@ -196,6 +196,15 @@ async function build() {
     fs.outputFileSync(path.join(outDir, 'assets', 'css', 'style.css'), cssResult.css);
   }
 
+  // 复制图片资源
+  const imagesDir = path.join(SOURCE, 'assets', 'images');
+  if (fs.existsSync(imagesDir)) {
+    const outImagesDir = path.join(outDir, 'assets', 'images');
+    fs.copySync(imagesDir, outImagesDir);
+    const imgCount = fs.readdirSync(imagesDir).filter(f => !f.startsWith('.')).length;
+    console.log(`   ✓ 已复制 ${imgCount} 张图片`);
+  }
+
   // 5. 渲染首页
   console.log('📄 渲染首页...');
   const indexHtml = renderIndex(data);
