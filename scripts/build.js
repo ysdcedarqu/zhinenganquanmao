@@ -81,7 +81,7 @@ function collectData() {
     pages: [],
   };
 
-  // 收集周报 (_posts/weekly/*.md)
+  // 收集进度报告 (_posts/weekly/*.md)
   const postsDir = path.join(SOURCE, '_posts', 'weekly');
   if (fs.existsSync(postsDir)) {
     fs.readdirSync(postsDir)
@@ -168,7 +168,7 @@ async function build() {
   // 1. 收集数据
   console.log('📊 收集数据...');
   const data = collectData();
-  console.log(`   - ${data.posts.length} 篇周报`);
+  console.log(`   - ${data.posts.length} 篇进度报告`);
   console.log(`   - ${data.issues.length} 个问题`);
   console.log(`   - ${data.processPages.length} 个流程阶段\n`);
 
@@ -210,14 +210,14 @@ async function build() {
   const indexHtml = renderIndex(data);
   fs.outputFileSync(path.join(outDir, 'index.html'), indexHtml);
 
-  // 6. 渲染周报页面
-  console.log('📄 渲染周报页面...');
+  // 6. 渲染进度报告页面
+  console.log('📄 渲染进度报告页面...');
   for (const post of data.posts) {
     const html = renderPost(post, data);
     const outPath = post.url.replace(CONFIG.baseurl, '');
     fs.outputFileSync(path.join(outDir, outPath), html);
   }
-  console.log(`   - ${data.posts.length} 篇周报已生成`);
+  console.log(`   - ${data.posts.length} 篇进度报告已生成`);
 
   // 7. 渲染问题页面
   console.log('📄 渲染问题页面...');
@@ -329,7 +329,7 @@ function renderIndex(data) {
       <div class="card-sub">${totalIssues} 个问题总计</div>
     </div>
     <div class="status-card">
-      <div class="card-label">最新周报</div>
+      <div class="card-label">最新进度报告</div>
       <div class="card-value" style="font-size: 1.1rem;">${latestPost ? latestPost.title : '暂无'}</div>
       <div class="card-sub">${latestPost ? formatDate(latestPost.date, 'ymd') : ''}</div>
     </div>`;
@@ -352,24 +352,24 @@ function renderIndex(data) {
       <span style="color: var(--primary);">进度 ${currentPhase.progress || 0}%</span>
     </div>` : '';
 
-  // 最新周报入口（点击查看，不预览内容）
+  // 最新进度报告入口（点击查看，不预览内容）
   let latestPostHtml = '';
   if (latestPost) {
     latestPostHtml = `
       <div class="fade-in" style="margin-bottom: 2rem; text-align: center;">
         <a href="${latestPost.url}" style="display: inline-block; padding: 20px 40px; background: var(--bg-card); border: 1px solid var(--border-active); border-radius: 16px; transition: all 0.3s;">
-          <p style="color: var(--primary); font-size: 0.9rem; font-weight: 600; letter-spacing: 1px; margin-bottom: 0.5rem;">📋 最新周报 · ${formatDate(latestPost.date, 'ymd')}</p>
+          <p style="color: var(--primary); font-size: 0.9rem; font-weight: 600; letter-spacing: 1px; margin-bottom: 0.5rem;">📋 最新进度报告 · ${formatDate(latestPost.date, 'ymd')}</p>
           <p style="font-size: 1.3rem; font-weight: 700; color: #fff; margin: 0;">${latestPost.title}</p>
           <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem;">进度 ${progress}% · 点击查看 →</p>
         </a>
       </div>`;
   }
 
-  // 历史周报列表
+  // 历史进度报告列表
   const olderPosts = data.posts.slice(1);
   const weeklyListHtml = olderPosts.length > 0 ? `
     <div class="fade-in">
-      <h3 style="color: var(--text-muted); font-size: 1.1rem; margin-bottom: 1.5rem; letter-spacing: 1px;">历史周报</h3>
+      <h3 style="color: var(--text-muted); font-size: 1.1rem; margin-bottom: 1.5rem; letter-spacing: 1px;">历史进度报告</h3>
       <div style="display: grid; gap: 1rem;">
         ${olderPosts.map(p => `
           <a href="${p.url}" style="display: flex; justify-content: space-between; align-items: center; padding: 16px 20px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; transition: all 0.3s;">
@@ -479,7 +479,7 @@ function renderIndex(data) {
   <div class="container">
     <div class="section">
       <div class="section-header fade-in">
-        <h2>周报</h2>
+        <h2>进度报告</h2>
         <p>每周研发进展记录</p>
       </div>
       ${latestPostHtml}
@@ -518,7 +518,7 @@ function renderPost(post, data) {
   const bodyContent = `
 <div class="container">
   <div class="section">
-    <a href="${relativeUrl('/')}#weekly" class="page-back">&larr; 返回周报列表</a>
+    <a href="${relativeUrl('/')}#weekly" class="page-back">&larr; 返回进度报告列表</a>
 
     <p style="color: var(--primary); font-size: 1.4rem; font-weight: 700; letter-spacing: 2px; margin-bottom: 0.5rem;">
       ${formatDate(post.date, 'ymd')}

@@ -59,7 +59,7 @@ title: 项目进度总览
         <div class="card-sub">{{ site.issues.size }} 个问题总计</div>
       </div>
       <div class="status-card">
-        <div class="card-label">周报数量</div>
+        <div class="card-label">进度报告</div>
         <div class="card-value">{{ site.posts.size }}</div>
         <div class="card-sub">持续更新中</div>
       </div>
@@ -101,17 +101,17 @@ title: 项目进度总览
   </div>
 </section>
 
-<!-- 周报 -->
+<!-- 进度报告 -->
 <section id="weekly">
   <div class="container">
     <div class="section">
       <div class="section-header fade-in">
-        <h2>周报</h2>
+        <h2>进度报告</h2>
         <p>每周研发进展记录</p>
       </div>
       {% if site.posts.size > 0 %}
         {% assign latest_post = site.posts | first %}
-        <!-- 最新周报全文展示 -->
+        <!-- 最新进度报告展示 -->
         <div class="fade-in" style="margin-bottom: 3rem;">
           <p style="color: var(--primary); font-size: 0.85rem; font-weight: 600; letter-spacing: 1px; margin-bottom: 1rem;">
             {{ latest_post.date | date: "%Y 年 %-m 月 %-d 日" }}
@@ -123,11 +123,11 @@ title: 项目进度总览
           </div>
         </div>
 
-        <!-- 历史周报列表 -->
+        <!-- 历史进度报告列表 -->
         {% assign older_posts = site.posts | shift %}
         {% if older_posts.size > 0 %}
         <div class="fade-in" style="margin-top: 2rem;">
-          <h3 style="color: var(--text-muted); font-size: 0.9rem; letter-spacing: 1px; margin-bottom: 1rem;">历史周报</h3>
+          <h3 style="color: var(--text-muted); font-size: 0.9rem; letter-spacing: 1px; margin-bottom: 1rem;">历史进度报告</h3>
           <ul class="item-list">
             {% for post in older_posts %}
             <a href="{{ post.url | relative_url }}" class="item-row">
@@ -140,7 +140,7 @@ title: 项目进度总览
         </div>
         {% endif %}
       {% else %}
-      <p style="text-align: center; color: var(--text-muted); padding: 2rem;">暂无周报，即将开始更新</p>
+      <p style="text-align: center; color: var(--text-muted); padding: 2rem;">暂无进度报告，即将开始更新</p>
       {% endif %}
     </div>
   </div>
