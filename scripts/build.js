@@ -523,7 +523,7 @@ function renderPost(post, data) {
     <p style="color: var(--primary); font-size: 1.4rem; font-weight: 700; letter-spacing: 2px; margin-bottom: 0.5rem;">
       ${formatDate(post.date, 'ymd')}
       ${post.org ? ' &nbsp;·&nbsp; ' + post.org : ''}
-      ${post.reporter ? ' &nbsp;·&nbsp; ' + post.reporter : ''}
+      ${post.reporter ? ' &nbsp;·&nbsp; 填报人：' + post.reporter : ''}
     </p>
     <h1 class="page-title">${post.title}</h1>
 
