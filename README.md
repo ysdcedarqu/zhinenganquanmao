@@ -26,7 +26,7 @@ npm run build
 
 ## 日常操作
 
-### 1. 撰写周报
+### 1. 撰写进度报告
 
 在 `_posts/weekly/` 下新建 `YYYY-MM-DD-weekNN.md`：
 
@@ -55,7 +55,7 @@ next_plan:
 
 | 字段 | 说明 |
 |------|------|
-| `title` | 周报标题 |
+| `title` | 进度报告标题 |
 | `date` | 发布日期，须与文件名日期一致 |
 | `reporter` | 填报人姓名 |
 | `org` | 所属单位 |
@@ -133,7 +133,7 @@ npm run build
 
 # 提交并推送
 git add .
-git commit -m "更新周报 / 关闭问题 / 更新进度"
+git commit -m "更新进度报告 / 关闭问题 / 更新进度"
 git push origin master
 ```
 
@@ -149,9 +149,9 @@ git push origin master
 | 指标 | 数据来源 | 更新方式 |
 |------|------|------|
 | 当前阶段 | `process/` 中 `status: 进行中` 的页面 | 改阶段文件的 `status` |
-| 整体进度 | 最新周报的 `progress` | 写新周报时填 `progress` |
+| 整体进度 | 最新进度报告的 `progress` | 写新报告时填 `progress` |
 | 待解决问题数 | `_issues/` 中 `status: open` 的数量 | 新建或关闭 Issue |
-| 周报全文 | 最新周报正文 | 写新周报即自动展示 |
+| 报告全文 | 最新进度报告正文 | 写新报告即自动展示 |
 
 ---
 
@@ -166,7 +166,7 @@ git push origin master
 ├── _includes/            # 可复用组件（导航、页脚、状态徽章）
 ├── _sass/main.scss       # 样式源文件
 ├── assets/css/style.scss # 样式入口（编译为 style.css）
-├── _posts/weekly/        # 周报（复制 TEMPLATE.md 新建）
+├── _posts/progress/        # 进度报告（复制 TEMPLATE.md 新建）
 ├── _issues/              # 问题跟踪（复制 TEMPLATE.md 新建）
 ├── process/              # 研发阶段详情页
 └── _site/                # 构建输出目录（不提交到 Git）

@@ -81,8 +81,8 @@ function collectData() {
     pages: [],
   };
 
-  // 收集进度报告 (_posts/weekly/*.md)
-  const postsDir = path.join(SOURCE, '_posts', 'weekly');
+  // 收集进度报告 (_posts/progress/*.md)
+  const postsDir = path.join(SOURCE, '_posts', 'progress');
   if (fs.existsSync(postsDir)) {
     fs.readdirSync(postsDir)
       .filter(f => f.endsWith('.md') && f !== 'TEMPLATE.md')
@@ -94,7 +94,7 @@ function collectData() {
         ...fm,
         content: marked.parse(content),
         rawContent: content,
-        url: relativeUrl('/weekly/' + f.replace('.md', '.html')),
+        url: relativeUrl('/progress/' + f.replace('.md', '.html')),
         filename: f,
       });
     });
@@ -367,7 +367,7 @@ function renderIndex(data) {
 
   // 历史进度报告列表
   const olderPosts = data.posts.slice(1);
-  const weeklyListHtml = olderPosts.length > 0 ? `
+  const progressListHtml = olderPosts.length > 0 ? `
     <div class="fade-in">
       <h3 style="color: var(--text-muted); font-size: 1.1rem; margin-bottom: 1.5rem; letter-spacing: 1px;">历史进度报告</h3>
       <div style="display: grid; gap: 1rem;">
@@ -475,7 +475,7 @@ function renderIndex(data) {
   </div>
 </section>
 
-<section id="weekly">
+<section id="progress">
   <div class="container">
     <div class="section">
       <div class="section-header fade-in">
@@ -483,7 +483,7 @@ function renderIndex(data) {
         <p>每周研发进展记录</p>
       </div>
       ${latestPostHtml}
-      ${weeklyListHtml}
+      ${progressListHtml}
     </div>
   </div>
 </section>
@@ -518,7 +518,7 @@ function renderPost(post, data) {
   const bodyContent = `
 <div class="container">
   <div class="section">
-    <a href="${relativeUrl('/')}#weekly" class="page-back">&larr; 返回进度报告列表</a>
+    <a href="${relativeUrl('/')}#progress" class="page-back">&larr; 返回进度报告列表</a>
 
     <p style="color: var(--primary); font-size: 1.4rem; font-weight: 700; letter-spacing: 2px; margin-bottom: 0.5rem;">
       ${formatDate(post.date, 'ymd')}

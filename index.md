@@ -102,7 +102,7 @@ title: 项目进度总览
 </section>
 
 <!-- 进度报告 -->
-<section id="weekly">
+<section id="progress">
   <div class="container">
     <div class="section">
       <div class="section-header fade-in">

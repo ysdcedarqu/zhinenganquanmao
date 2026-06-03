@@ -17,7 +17,7 @@ defaults:
       type: "posts"
     values:
       layout: "post"
-      category: "weekly"
+      category: "progress"
   - scope:
       path: ""
       type: "issues"
