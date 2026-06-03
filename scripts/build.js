@@ -352,43 +352,16 @@ function renderIndex(data) {
       <span style="color: var(--primary);">进度 ${currentPhase.progress || 0}%</span>
     </div>` : '';
 
-  // 最新周报预览
+  // 最新周报入口（点击查看，不预览内容）
   let latestPostHtml = '';
   if (latestPost) {
-    const postIssuesHtml = (latestPost.issues && latestPost.issues.length > 0) ? `
-      <div class="info-panel panel-danger">
-        <h3>遇到的问题</h3>
-        <ul>${latestPost.issues.map(i => `<li>${i}</li>`).join('')}</ul>
-      </div>` : '';
-    const postNextPlanHtml = (latestPost.next_plan && latestPost.next_plan.length > 0) ? `
-      <div class="info-panel panel-success">
-        <h3>下周计划</h3>
-        <ul>${latestPost.next_plan.map(i => `<li>${i}</li>`).join('')}</ul>
-      </div>` : '';
-    const postContent = latestPost.content || '';
     latestPostHtml = `
-      <div class="fade-in" style="margin-bottom: 3rem;">
-        <p style="color: var(--primary); font-size: 0.85rem; font-weight: 600; letter-spacing: 1px; margin-bottom: 1rem;">
-          ${formatDate(latestPost.date, 'ymd')}
-          ${latestPost.org ? '&nbsp;·&nbsp; ' + latestPost.org : ''}
-          ${latestPost.reporter ? '&nbsp;·&nbsp; 填报人：' + latestPost.reporter : ''}
-        </p>
-        <h2 style="font-size: 1.8rem; margin-bottom: 1rem; color: #fff;">${latestPost.title}</h2>
-        <div style="margin-bottom: 2rem;">
-          <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
-            <span style="font-size: 0.8rem; color: var(--text-muted); letter-spacing: 1px;">本周进度</span>
-            <span style="font-size: 0.85rem; color: var(--primary); font-weight: 700;">${progress}%</span>
-          </div>
-          <div class="progress-bar-lg">
-            <div class="progress-fill" style="width: ${progress}%;"></div>
-          </div>
-        </div>
-        <div class="post-content">${postContent}</div>
-        ${postIssuesHtml}
-        ${postNextPlanHtml}
-        <div style="text-align: center; margin-top: 2.5rem;">
-          <a href="${latestPost.url}" style="display: inline-block; padding: 10px 32px; border: 1px solid var(--border-active); border-radius: 50px; color: var(--primary); font-weight: 600; letter-spacing: 1px;">阅读全文 →</a>
-        </div>
+      <div class="fade-in" style="margin-bottom: 2rem; text-align: center;">
+        <a href="${latestPost.url}" style="display: inline-block; padding: 20px 40px; background: var(--bg-card); border: 1px solid var(--border-active); border-radius: 16px; transition: all 0.3s;">
+          <p style="color: var(--primary); font-size: 0.9rem; font-weight: 600; letter-spacing: 1px; margin-bottom: 0.5rem;">📋 最新周报 · ${formatDate(latestPost.date, 'ymd')}</p>
+          <p style="font-size: 1.3rem; font-weight: 700; color: #fff; margin: 0;">${latestPost.title}</p>
+          <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem;">进度 ${progress}% · 点击查看 →</p>
+        </a>
       </div>`;
   }
 
@@ -547,10 +520,10 @@ function renderPost(post, data) {
   <div class="section">
     <a href="${relativeUrl('/')}#weekly" class="page-back">&larr; 返回周报列表</a>
 
-    <p style="color: var(--primary); font-size: 0.85rem; font-weight: 600; letter-spacing: 1px; margin-bottom: 0.5rem;">
+    <p style="color: var(--primary); font-size: 1.4rem; font-weight: 700; letter-spacing: 2px; margin-bottom: 0.5rem;">
       ${formatDate(post.date, 'ymd')}
       ${post.org ? ' &nbsp;·&nbsp; ' + post.org : ''}
-      ${post.reporter ? ' &nbsp;·&nbsp; 填报人：' + post.reporter : ''}
+      ${post.reporter ? ' &nbsp;·&nbsp; ' + post.reporter : ''}
     </p>
     <h1 class="page-title">${post.title}</h1>
 
