@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ESP32 前期工作总结 — 墨水屏驱动、WiFi通信与低功耗验证 · 智能安全帽 · 项目进度</title>
+  <link rel="stylesheet" href="/zhinenganquanmao/assets/css/style.css">
+  
+  <meta name="description" content="智慧工地安全解决方案 — 研发进度汇报">
+  <meta property="og:title" content="ESP32 前期工作总结 — 墨水屏驱动、WiFi通信与低功耗验证 · 智能安全帽 · 项目进度">
+  <meta property="og:description" content="智慧工地安全解决方案 — 研发进度汇报">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ysdcedarqu.github.io/zhinenganquanmao/weekly/2026-06-03-esp32-summary.html">
+  
+</head>
+<body>
+  <nav class="navbar">
+  <div class="navbar-inner">
+    <a href="/zhinenganquanmao/" class="logo">
+      <span class="icon">🪖</span> SMART HELMET
+    </a>
+    <ul class="nav-links">
+      <li><a href="/zhinenganquanmao/#overview">状态总览</a></li>
+      <li><a href="/zhinenganquanmao/#process">研发流程</a></li>
+      <li><a href="/zhinenganquanmao/#weekly">进度报告</a></li>
+      <li><a href="/zhinenganquanmao/#issues">问题跟踪</a></li>
+    </ul>
+  </div>
+</nav>
+
+  <main style="padding-top: 68px;">
+    
+<div class="container">
+  <div class="section">
+    <a href="/zhinenganquanmao/#weekly" class="page-back">&larr; 返回进度报告列表</a>
+
+    <p style="color: var(--primary); font-size: 1.4rem; font-weight: 700; letter-spacing: 2px; margin-bottom: 0.5rem;">
+      2026 年 6 月 3 日
+      
+       &nbsp;·&nbsp; 填报人：屈雪松
+    </p>
+    <h1 class="page-title">ESP32 前期工作总结 — 墨水屏驱动、WiFi通信与低功耗验证</h1>
+
+    
+    <div style="margin: 1.5rem 0 2rem; max-width: 480px;">
+      <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+        <span style="font-size: 0.8rem; color: var(--text-muted); letter-spacing: 1px;">本周进度</span>
+        <span style="font-size: 0.85rem; color: var(--primary); font-weight: 700;">0%</span>
+      </div>
+      <div class="progress-bar-lg">
+        <div class="progress-fill" style="width: 0%;"></div>
+      </div>
+    </div>
+
+    <div class="post-content">
+      <p style="font-size: 1.1em;"><strong>单位：粤水电智能制造研究院</strong>　|　<strong>IOT工程师：屈雪松</strong>　|　<strong>硬件工程师：林肖逸</strong></p>
+
+<h2>概述</h2>
+<p>在启动工人用智能安全帽项目前，已基于 ESP32 开发板（Waveshare 5.83&quot; 墨水屏）完成了一系列技术验证，积累了对项目有直接价值的前期成果。本报告梳理这些工作的关键收获。</p>
+<h2>已完成项目一览</h2>
+<table>
+<thead>
+<tr>
+<th align="left">项目</th>
+<th align="left">内容</th>
+<th align="left">安全帽相关性</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>epaper_clock</code></td>
+<td align="left">墨水屏时钟 + WiFi + NTP + 天气</td>
+<td align="left">⭐⭐⭐⭐⭐</td>
+</tr>
+<tr>
+<td align="left"><code>epaper_clock_qt</code></td>
+<td align="left">同上，优化局部刷新策略</td>
+<td align="left">⭐⭐⭐⭐⭐</td>
+</tr>
+<tr>
+<td align="left"><code>epaper_5in83_V2_test</code></td>
+<td align="left">墨水屏全刷/局刷/灰阶/休眠</td>
+<td align="left">⭐⭐⭐⭐</td>
+</tr>
+<tr>
+<td align="left"><code>epaper_gif</code></td>
+<td align="left">墨水屏动画、GPIO 直驱 SPI</td>
+<td align="left">⭐⭐⭐</td>
+</tr>
+<tr>
+<td align="left"><code>epaper_image_test</code></td>
+<td align="left">自定义图片显示</td>
+<td align="left">⭐⭐⭐</td>
+</tr>
+<tr>
+<td align="left"><code>microros_publisher</code></td>
+<td align="left">micro-ROS 发布/订阅</td>
+<td align="left">⭐⭐</td>
+</tr>
+<tr>
+<td align="left"><code>ssh_log_uploader</code></td>
+<td align="left">WiFi + SSH 日志上传</td>
+<td align="left">⭐⭐</td>
+</tr>
+<tr>
+<td align="left"><code>gpio_button_test</code></td>
+<td align="left">按键输入控制 LED</td>
+<td align="left">⭐⭐</td>
+</tr>
+<tr>
+<td align="left"><code>hello_world</code> / <code>blink</code> / <code>breath</code></td>
+<td align="left">ESP-IDF 入门例程</td>
+<td align="left">⭐</td>
+</tr>
+</tbody></table>
+<h2>一、墨水屏驱动 — 核心成果</h2>
+<h3>已验证的硬件配置</h3>
+<table>
+<thead>
+<tr>
+<th align="left">信号</th>
+<th align="left">GPIO</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">SCK</td>
+<td align="left">13</td>
+<td align="left">SPI 时钟</td>
+</tr>
+<tr>
+<td align="left">MOSI</td>
+<td align="left">14</td>
+<td align="left">SPI 数据输出</td>
+</tr>
+<tr>
+<td align="left">CS</td>
+<td align="left">15</td>
+<td align="left">片选</td>
+</tr>
+<tr>
+<td align="left">DC</td>
+<td align="left">27</td>
+<td align="left">数据/命令选择</td>
+</tr>
+<tr>
+<td align="left">RST</td>
+<td align="left">26</td>
+<td align="left">复位</td>
+</tr>
+<tr>
+<td align="left">BUSY</td>
+<td align="left">25</td>
+<td align="left">忙信号检测</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>以上配置来源于 <code>epaper_clock</code> 项目的 README，已在多个项目中反复验证，稳定可靠。</p>
+</blockquote>
+<h3>关键驱动模式</h3>
+<p><strong>1. 全刷（Full Refresh）</strong></p>
+<pre><code>EPD_5in83_V2_Init();
+EPD_5in83_V2_Display(imageBuffer);
+EPD_5in83_V2_Sleep();
+</code></pre>
+<ul>
+<li>适用于首次上电、内容大幅变更</li>
+<li>功耗较高，有闪烁（墨水屏物理特性）</li>
+</ul>
+<p><strong>2. 局部刷新（Partial Refresh）</strong></p>
+<pre><code>EPD_5in83_V2_Init();
+EPD_5in83_V2_Display_Partial(imageBuffer, x, y, w, h);
+EPD_5in83_V2_Sleep();
+</code></pre>
+<ul>
+<li>适用于时钟秒数更新、位置文本变化</li>
+<li>功耗低，无闪烁</li>
+<li><code>epaper_clock_qt</code> 中已实现秒级局刷</li>
+</ul>
+<p><strong>3. 休眠模式</strong></p>
+<pre><code>EPD_5in83_V2_Sleep();
+</code></pre>
+<ul>
+<li>进入低功耗状态，适合电池供电场景</li>
+<li>配合 ESP32 Deep-sleep 可大幅降低待机功耗</li>
+</ul>
+<h3>图像资源生成</h3>
+<p>使用 <code>convert_image.py</code> 将 PNG 转为墨水屏专用 C 数组：</p>
+<pre><code>python3 convert_image.py input.png
+</code></pre>
+<p>生成的文件可直接嵌入固件，作为墨水屏显示素材（图标、LOGO、背景等）。</p>
+<h2>二、WiFi + 网络通信</h2>
+<h3>NTP 时间同步</h3>
+<pre><code class="language-cpp">configTime(8 * 3600, 0, &quot;ntp.aliyun.com&quot;, &quot;ntp.ntsc.ac.cn&quot;);
+</code></pre>
+<ul>
+<li>使用阿里云和国内 NTP 服务器，工地网络环境友好</li>
+<li>可用于安全帽时间戳记录</li>
+</ul>
+<h3>HTTP 数据获取</h3>
+<pre><code class="language-cpp">HTTPClient http;
+http.begin(&quot;https://api.example.com/data&quot;);
+int code = http.GET();
+</code></pre>
+<ul>
+<li>已在 <code>epaper_clock</code> 中验证（天气 API 调用）</li>
+<li>可改造为云端定位数据上报</li>
+</ul>
+<h3>SSH 日志上传（<code>ssh_log_uploader</code>）</h3>
+<ul>
+<li>使用 <code>LibSSH-ESP32</code> 库</li>
+<li>FreeRTOS 独立任务处理 SSH 连接</li>
+<li>SPIFFS 存储本地日志</li>
+<li>可用于安全帽异常事件日志上传</li>
+</ul>
+<h2>三、micro-ROS 通信验证</h2>
+<p><code>microros_publisher</code> 已验证：</p>
+<ul>
+<li>ESP32 通过 WiFi UDP 连接 micro-ROS Agent</li>
+<li>发布 <code>/esp32_counter</code> 话题（1Hz）</li>
+<li>订阅 <code>/esp32_led</code> 控制板载 LED</li>
+</ul>
+<pre><code class="language-cpp">rcl_publisher_init(&amp;publisher, &amp;node, 
+    ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Int32), 
+    &quot;/esp32_counter&quot;, &amp;rmw_qos_profile_default);
+</code></pre>
+<blockquote>
+<p>对未来意义：若安全帽需接入 ROS2 机器人/工地管理系统，此方案可直接复用。</p>
+</blockquote>
+<h2>四、低功耗实践总结</h2>
+<h3>已验证的省电策略</h3>
+<table>
+<thead>
+<tr>
+<th align="left">策略</th>
+<th align="left">实现方式</th>
+<th align="left">效果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">墨水屏休眠</td>
+<td align="left"><code>EPD_Sleep()</code> 后墨水屏零功耗保持画面</td>
+<td align="left">关键</td>
+</tr>
+<tr>
+<td align="left">ESP32 Deep-sleep</td>
+<td align="left"><code>esp_deep_sleep_start()</code></td>
+<td align="left">待机 ~5μA</td>
+</tr>
+<tr>
+<td align="left">WiFi 按需连接</td>
+<td align="left">先连 WiFi → 获取数据 → 断开 → 休眠</td>
+<td align="left">大幅省电</td>
+</tr>
+<tr>
+<td align="left">局刷代替全刷</td>
+<td align="left"><code>Display_Partial()</code></td>
+<td align="left">减少刷新功耗</td>
+</tr>
+</tbody></table>
+<h3>建议的工人帽工作流程</h3>
+<pre><code>启动 → WiFi连接 → NTP同步 → GNSS定位
+  → 墨水屏全刷显示 → 墨水屏休眠 → ESP32 Deep-sleep
+  → 定时唤醒 → 局刷更新位置 → 继续休眠
+</code></pre>
+<h2>五、对工人安全帽项目的直接价值</h2>
+<table>
+<thead>
+<tr>
+<th align="left">前期成果</th>
+<th align="left">工人帽直接应用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">墨水屏 SPI 驱动模式</td>
+<td align="left">可直接移植到 2.13&quot;/2.9&quot; 小屏</td>
+</tr>
+<tr>
+<td align="left">局刷 + 休眠策略</td>
+<td align="left">核心省电方案</td>
+</tr>
+<tr>
+<td align="left">NTP + WiFi 模式</td>
+<td align="left">时间同步、数据上报</td>
+</tr>
+<tr>
+<td align="left"><code>convert_image.py</code></td>
+<td align="left">图标/UI 素材生成</td>
+</tr>
+<tr>
+<td align="left">GPIO 按键读取</td>
+<td align="left">SOS/功能按键</td>
+</tr>
+<tr>
+<td align="left">micro-ROS 发布</td>
+<td align="left">未来 ROS2 生态接入</td>
+</tr>
+</tbody></table>
+<h2>六、待补充的技术验证</h2>
+<ul>
+<li><input disabled="" type="checkbox"> GNSS 模组驱动（ATGM336H / L76K UART 通信）</li>
+<li><input disabled="" type="checkbox"> BLE 信标扫描与 RSSI 读取</li>
+<li><input disabled="" type="checkbox"> ESP32-C3 的实际功耗对比测试</li>
+<li><input disabled="" type="checkbox"> 纽扣电池供电的电压稳定性测试（3V 直接供电 vs 升压）</li>
+<li><input disabled="" type="checkbox"> 小尺寸墨水屏（2.13&quot;/2.9&quot;）驱动验证</li>
+<li><input disabled="" type="checkbox"> 墨水屏在安全帽内侧的可读性实测</li>
+</ul>
+
+    </div>
+
+    
+    
+  </div>
+</div>
+  </main>
+  <footer>
+  <p>&copy; 2026 智能安全帽 &middot; 智慧工地安全解决方案 &middot; Powered by <a href="https://github.com/ysdcedarqu/zhinenganquanmao" target="_blank">GitHub</a></p>
+</footer>
+
+
+  <script>
+    // 滚动淡入
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // 导航栏滚动效果
+    const navbar = document.querySelector('.navbar');
+    let lastScroll = 0;
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      if (scrollY > 100) {
+        navbar.style.boxShadow = '0 4px 30px rgba(0,0,0,0.3), 0 0 20px rgba(0,229,255,0.05)';
+      } else {
+        navbar.style.boxShadow = 'none';
+      }
+      lastScroll = scrollY;
+    });
+  </script>
+</body>
+</html>
