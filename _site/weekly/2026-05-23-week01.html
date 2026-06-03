@@ -52,9 +52,8 @@
       </div>
     </div>
 
-    <div id="protected-content" style="display: none;">
-      <div class="post-content">
-        <p style="font-size: 1.1em;"><strong>单位：粤水电智能制造研究院</strong>　|　<strong>IOT工程师：屈雪松</strong>　|　<strong>硬件工程师：林肖逸</strong></p>
+    <div class="post-content">
+      <p style="font-size: 1.1em;"><strong>单位：粤水电智能制造研究院</strong>　|　<strong>IOT工程师：屈雪松</strong>　|　<strong>硬件工程师：林肖逸</strong></p>
 
 <h2>本周完成</h2>
 <ul>
@@ -246,62 +245,20 @@
 <li>开始整理需求规格文档（SRS）初稿</li>
 </ol>
 
-      </div>
+    </div>
 
-      
+    
     <div class="info-panel panel-danger">
       <h3>遇到的问题</h3>
       <ul><li>定位模块技术路线尚未确定（GNSS vs UWB vs BLE）</li><li>音频模块选型待调研</li><li>应急呼救功能细节待定</li><li>视频图片上传方案未确定（上传策略、压缩格式、断点续传）</li></ul>
     </div>
-      
+    
     <div class="info-panel panel-success">
       <h3>下周计划</h3>
       <ul><li>完成全部功能模块需求确认</li><li>启动方案设计阶段</li><li>调研定位模块技术路线</li><li>调研音频模块芯片方案</li><li>调研应急呼救具体实现细节</li><li>调研视频图片上传方案（上传策略、压缩格式）</li></ul>
     </div>
-    </div>
-
-    <div id="password-gate" style="text-align: center; padding: 3rem 1rem;">
-      <p style="font-size: 1.1rem; color: var(--text-muted); margin-bottom: 1rem;">🔒 此内容需要密码访问</p>
-      <input type="password" id="pwd-input" placeholder="请输入访问密码" style="padding: 0.6rem 1rem; font-size: 1rem; border: 1px solid var(--border); border-radius: 6px; background: var(--bg-card); color: var(--text); width: 240px; max-width: 80%; text-align: center;" />
-      <button id="pwd-submit" style="display: block; margin: 1rem auto 0; padding: 0.5rem 2rem; font-size: 0.95rem; background: var(--primary); color: #fff; border: none; border-radius: 6px; cursor: pointer;">确认</button>
-      <p id="pwd-error" style="color: #f56c6c; font-size: 0.85rem; margin-top: 0.8rem; display: none;">密码错误，请重试</p>
-    </div>
   </div>
 </div>
-
-<script>
-  (function() {
-    var gate = document.getElementById('password-gate');
-    var content = document.getElementById('protected-content');
-    var input = document.getElementById('pwd-input');
-    var btn = document.getElementById('pwd-submit');
-    var err = document.getElementById('pwd-error');
-
-    if (sessionStorage.getItem('weekly-auth') === '1') {
-      gate.style.display = 'none';
-      content.style.display = 'block';
-      return;
-    }
-
-    function check() {
-      if (input.value === 'ysdznaqm') {
-        sessionStorage.setItem('weekly-auth', '1');
-        gate.style.display = 'none';
-        content.style.display = 'block';
-      } else {
-        err.style.display = 'block';
-        input.value = '';
-        input.focus();
-      }
-    }
-
-    btn.addEventListener('click', check);
-    input.addEventListener('keydown', function(e) {
-      if (e.key === 'Enter') check();
-    });
-    input.focus();
-  })();
-</script>
   </main>
   <footer>
   <p>&copy; 2026 智能安全帽 &middot; 智慧工地安全解决方案 &middot; Powered by <a href="https://github.com/ysdcedarqu/zhinenganquanmao" target="_blank">GitHub</a></p>

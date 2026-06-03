@@ -538,57 +538,14 @@ function renderPost(post, data) {
       </div>
     </div>` : ''}
 
-    <div id="protected-content" style="display: none;">
-      <div class="post-content">
-        ${post.content || ''}
-      </div>
-
-      ${issuesHtml}
-      ${nextPlanHtml}
+    <div class="post-content">
+      ${post.content || ''}
     </div>
 
-    <div id="password-gate" style="text-align: center; padding: 3rem 1rem;">
-      <p style="font-size: 1.1rem; color: var(--text-muted); margin-bottom: 1rem;">🔒 此内容需要密码访问</p>
-      <input type="password" id="pwd-input" placeholder="请输入访问密码" style="padding: 0.6rem 1rem; font-size: 1rem; border: 1px solid var(--border); border-radius: 6px; background: var(--bg-card); color: var(--text); width: 240px; max-width: 80%; text-align: center;" />
-      <button id="pwd-submit" style="display: block; margin: 1rem auto 0; padding: 0.5rem 2rem; font-size: 0.95rem; background: var(--primary); color: #fff; border: none; border-radius: 6px; cursor: pointer;">确认</button>
-      <p id="pwd-error" style="color: #f56c6c; font-size: 0.85rem; margin-top: 0.8rem; display: none;">密码错误，请重试</p>
-    </div>
+    ${issuesHtml}
+    ${nextPlanHtml}
   </div>
-</div>
-
-<script>
-  (function() {
-    var gate = document.getElementById('password-gate');
-    var content = document.getElementById('protected-content');
-    var input = document.getElementById('pwd-input');
-    var btn = document.getElementById('pwd-submit');
-    var err = document.getElementById('pwd-error');
-
-    if (sessionStorage.getItem('weekly-auth') === '1') {
-      gate.style.display = 'none';
-      content.style.display = 'block';
-      return;
-    }
-
-    function check() {
-      if (input.value === 'ysdznaqm') {
-        sessionStorage.setItem('weekly-auth', '1');
-        gate.style.display = 'none';
-        content.style.display = 'block';
-      } else {
-        err.style.display = 'block';
-        input.value = '';
-        input.focus();
-      }
-    }
-
-    btn.addEventListener('click', check);
-    input.addEventListener('keydown', function(e) {
-      if (e.key === 'Enter') check();
-    });
-    input.focus();
-  })();
-</script>`;
+</div>`;
 
   return renderLayout(post, data, bodyContent);
 }
