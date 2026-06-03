@@ -219,6 +219,19 @@ async function build() {
   }
   console.log(`   - ${data.posts.length} 篇进度报告已生成`);
 
+  // 6b. 生成旧 /weekly/ → /progress/ 重定向
+  console.log('🔀 生成旧路径重定向...');
+  for (const post of data.posts) {
+    const oldPath = post.url.replace('/progress/', '/weekly/');
+    const oldOutPath = oldPath.replace(CONFIG.baseurl, '');
+    const newUrl = post.url;
+    const redirectHtml = `<!DOCTYPE html>
+<html><head><meta http-equiv="refresh" content="0;url=${newUrl}"></head>
+<body><p>页面已迁移，<a href="${newUrl}">点击这里</a></p></body></html>`;
+    fs.outputFileSync(path.join(outDir, oldOutPath), redirectHtml);
+  }
+  console.log(`   ✓ ${data.posts.length} 个重定向已生成`);
+
   // 7. 渲染问题页面
   console.log('📄 渲染问题页面...');
   for (const issue of data.issues) {
