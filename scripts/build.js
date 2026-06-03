@@ -379,12 +379,12 @@ function renderIndex(data) {
   }
 
   // 历史进度报告列表
-  const olderPosts = data.posts.slice(1);
-  const progressListHtml = olderPosts.length > 0 ? `
+  const allPosts = data.posts;
+  const progressListHtml = allPosts.length > 0 ? `
     <div class="fade-in">
       <h3 style="color: var(--text-muted); font-size: 1.1rem; margin-bottom: 1.5rem; letter-spacing: 1px;">历史进度报告</h3>
       <div style="display: grid; gap: 1rem;">
-        ${olderPosts.map(p => `
+        ${allPosts.map(p => `
           <a href="${p.url}" style="display: flex; justify-content: space-between; align-items: center; padding: 16px 20px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; transition: all 0.3s;">
             <div>
               <div style="font-weight: 600; color: #fff; margin-bottom: 4px;">${p.title}</div>
