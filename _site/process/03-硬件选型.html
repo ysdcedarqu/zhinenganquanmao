@@ -40,17 +40,17 @@
         <p style="font-size: 0.8rem; color: var(--primary); font-weight: 600; letter-spacing: 2px; margin-bottom: 2px;">PHASE 3 / 7</p>
         <h1 class="page-title" style="margin-bottom: 0;">硬件选型</h1>
       </div>
-      <span class="badge badge-info">未开始</span>
+      <span class="badge badge-warning">进行中</span>
     </div>
 
     
     <div style="margin: 2rem 0;">
       <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
         <span style="font-size: 0.8rem; color: var(--text-muted); letter-spacing: 1px;">阶段进度</span>
-        <span style="font-size: 0.9rem; color: var(--primary); font-weight: 700;">0%</span>
+        <span style="font-size: 0.9rem; color: var(--primary); font-weight: 700;">15%</span>
       </div>
       <div class="progress-bar-lg">
-        <div class="progress-fill" style="width: 0%;"></div>
+        <div class="progress-fill" style="width: 15%;"></div>
       </div>
     </div>
 
@@ -59,10 +59,15 @@
 <p>根据方案设计确定各模块具体芯片和元器件选型，输出 BOM（物料清单）。</p>
 <h2>主要工作</h2>
 <ul>
-<li><input disabled="" type="checkbox"> MCU 主控芯片选型</li>
+<li><input checked="" disabled="" type="checkbox"> MCU 主控芯片选型 → ESP32-S31-WROOM-3 模组</li>
+<li><input checked="" disabled="" type="checkbox"> 音频方案确定 → ES8389 Codec + NS4150B PA（复用 Korvo-1 参考设计）</li>
+<li><input checked="" disabled="" type="checkbox"> 摄像头方案确定 → OV3660（复用 Korvo-1 参考设计）</li>
 <li><input disabled="" type="checkbox"> IMU 传感器选型（六轴加速度 + 陀螺仪）</li>
 <li><input disabled="" type="checkbox"> 霍尔传感器选型</li>
-<li><input disabled="" type="checkbox"> 定位模块选型</li>
+<li><input disabled="" type="checkbox"> 定位模块选型（GNSS + BLE 信标）</li>
+<li><input disabled="" type="checkbox"> 4G 通信模块选型</li>
+<li><input disabled="" type="checkbox"> 电池选型（2000–3000mAh 可拆卸锂电）</li>
+<li><input disabled="" type="checkbox"> 输出完整 BOM</li>
 <li><input disabled="" type="checkbox"> 音频模块选型（麦克风 + 扬声器 + Codec）</li>
 <li><input disabled="" type="checkbox"> 4G 通信模块选型</li>
 <li><input disabled="" type="checkbox"> 摄像头模组选型</li>
